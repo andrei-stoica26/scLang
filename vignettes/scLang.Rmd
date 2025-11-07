@@ -161,7 +161,7 @@ head(colNames1)
 **Note**: Just like `scCol`, the `metadataDF` and `metadataNames` functions 
 allow users to alter the value of the stored objects.
 
-The scColCounts and scColPairCounts functions are wrappers around 
+The `scColCounts` and `scColPairCounts` functions are wrappers around 
 `dplyr::count` and enable counting frequencies of elements from one or two 
 categorical columns in a Seurat or SingleCellExpression object:
 

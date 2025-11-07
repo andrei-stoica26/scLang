@@ -8,10 +8,9 @@
 #' @return A character vector.
 #'
 #' @examples
-#' scObj <- withr::with_seed(1, scuttle::mockSCE(ngenes=20000))
-#' scObj <- scuttle::logNormCounts(scObj)
-#' scObj <- scater::runPCA(scObj)
-#' dimredNames(scObj)
+#' scePath <- system.file('extdata', 'sceObj.qs', package='scLang')
+#' sceObj <- qs::qread(scePath)
+#' dimredNames(sceObj)
 #'
 #' @export
 #'

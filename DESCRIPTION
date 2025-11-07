@@ -20,13 +20,14 @@ Imports:
     stats,
     SummarizedExperiment
 Suggests:
+    BiocStyle,
     knitr,
     qs,
     rmarkdown,
     scater,
-    scuttle,
+    scRNAseq,
+    Seurat,
     testthat (>= 3.0.0),
-    withr
 Encoding: UTF-8
 URL: https://github.com/andrei-stoica26/scLang
 BugReports: https://github.com/andrei-stoica26/scLang/issues
