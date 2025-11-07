@@ -1,0 +1,7 @@
+.Rbuildignore
+.Rhistory
+.Rproj.user
+R/.test_code.R
+hammers.Rproj
+inst/doc
+*.pdf

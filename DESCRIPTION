@@ -1,0 +1,30 @@
+Package: scLang
+Type: Package
+Title: A unified language for interacting with Seurat and SingleCellExperiment
+Version: 0.1.0
+Authors@R: person('Andrei-Florian', 'Stoica', 
+      email='andreistoica@foxmail.com',
+     role=c('aut','cre'),
+     comment=c(ORCID='0000-0002-5253-0826'))
+Description: scLang is a suite for package development for scRNA-seq analysis. 
+    It offers functions—both getters and setters—that can operate 
+    on both Seurat and SingleCellExperiment objects, intended to help 
+    developers build tools compatible with both types of input.
+License: MIT + file LICENSE
+Imports:
+    dplyr,
+    rlang,
+    S4Vectors,
+    SeuratObject,
+    SingleCellExperiment,
+    stats,
+    SummarizedExperiment
+Suggests:
+    qs,
+    scater,
+    scuttle,
+    withr
+Encoding: UTF-8
+URL: https://github.com/andrei-stoica26/scLang
+BugReports: https://github.com/andrei-stoica26/scLang/issues
+RoxygenNote: 7.3.3
