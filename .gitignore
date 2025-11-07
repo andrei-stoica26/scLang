@@ -2,6 +2,6 @@
 .Rhistory
 .Rproj.user
 R/.test_code.R
-hammers.Rproj
+*.Rproj
 inst/doc
 *.pdf

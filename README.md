@@ -1,4 +1,4 @@
-# hammers
+# scLang
 
 `scLang` is a suite for package development for scRNA-seq analysis. 
 It offers functions—both getters and setters—that can operate 

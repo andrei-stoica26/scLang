@@ -20,7 +20,9 @@ Imports:
     stats,
     SummarizedExperiment
 Suggests:
+    knitr,
     qs,
+    rmarkdown,
     scater,
     scuttle,
     withr
@@ -28,3 +30,4 @@ Encoding: UTF-8
 URL: https://github.com/andrei-stoica26/scLang
 BugReports: https://github.com/andrei-stoica26/scLang/issues
 RoxygenNote: 7.3.3
+VignetteBuilder: knitr
