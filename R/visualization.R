@@ -1,4 +1,4 @@
-#' @importFrom ggplot2 aes ggplot geom_point labs scale_color_manual theme_classic
+#' @importFrom ggplot2 aes element_text ggplot geom_point labs scale_color_manual theme theme_classic
 #' @importFrom grDevices rainbow
 #' @importFrom henna centerTitle
 #'

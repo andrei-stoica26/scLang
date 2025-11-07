@@ -27,3 +27,8 @@ test_that("compatibility functions work", {
     colnames(v) <- paste0('UMAP_', seq(2))
     expect_equal(v, w)
 })
+
+test_that("visualization functions work", {
+    p <- dimPlot(sceObj, groupBy='Donor')
+    expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
+})
