@@ -13,6 +13,8 @@ Description: scLang is a suite for package development for scRNA-seq analysis.
 License: MIT + file LICENSE
 Imports:
     dplyr,
+    ggplot2,
+    henna,
     rlang,
     S4Vectors,
     SeuratObject,
