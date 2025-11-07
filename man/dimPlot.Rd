@@ -17,10 +17,24 @@ dimPlot(
 )
 }
 \arguments{
+\item{scObj}{A \code{Seurat} or \code{SingleCellExperiment} object.}
+
 \item{title}{Plot title.}
+
+\item{groupBy}{Grouping variable. Must exist in the metadata/coldata of
+the single-cell expression object.}
+
+\item{dimred}{Dimensionality reduction.}
+
+\item{dims}{A numeric vector of size 2 representing the dimensions selected
+for the plot.}
+
+\item{legendTitle}{Legend title.}
 
 \item{paletteFun}{Palette function. Must accept the number of colors as the
 first argument and require no other arguments.}
+
+\item{alpha}{Opaqueness level.}
 }
 \value{
 A dimensionality reduction plot

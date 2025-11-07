@@ -31,9 +31,7 @@ documentFun(
   axisTitleSize = 12,
   xAngle = 45,
   vJust = 0.6,
-  margins = margin(0, -10, -10, -10),
   theme = "linedraw",
-  pvalOffset = 1.00000023069254e-317,
   ...
 )
 }
@@ -92,13 +90,7 @@ and its data point.}
 
 \item{vJust}{Vertical justification in [0, 1].}
 
-\item{margins}{Plot margins. Must be a vector of size 4 listing the desired
-top, right, bottom and left margin, in that order.}
-
 \item{theme}{Plot theme.}
-
-\item{pvalOffset}{Offset added to p-values to avoid infinite values when
-taking logarithms.}
 
 \item{...}{Additional arguments passed to \code{centerTitle}.}
 

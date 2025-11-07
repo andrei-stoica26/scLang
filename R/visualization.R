@@ -1,4 +1,5 @@
-#' @importFrom ggplot2 ggplot geom_point
+#' @importFrom ggplot2 aes ggplot geom_point labs scale_color_manual theme_classic
+#' @importFrom grDevices rainbow
 #' @importFrom henna centerTitle
 #'
 NULL
@@ -7,6 +8,7 @@ NULL
 #'
 #' This function creates a dimensionality reduction plot
 #'
+#' @inheritParams documentFun
 #' @param title Plot title.
 #' @param paletteFun Palette function. Must accept the number of colors as the
 #' first argument and require no other arguments.
