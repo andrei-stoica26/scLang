@@ -16,8 +16,10 @@ Imports:
     ggplot2,
     grDevices,
     henna,
+    LISTO,
     rlang,
     S4Vectors,
+    Seurat,
     SeuratObject,
     SingleCellExperiment,
     stats,
@@ -29,7 +31,6 @@ Suggests:
     rmarkdown,
     scater,
     scRNAseq,
-    Seurat,
     testthat (>= 3.0.0),
 Encoding: UTF-8
 URL: https://github.com/andrei-stoica26/scLang
