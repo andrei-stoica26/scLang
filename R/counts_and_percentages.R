@@ -2,10 +2,10 @@
 #'
 NULL
 
-#' Extract count information from single-cell expression object column
+#' Extract per-group counts from the column of a single-cell expression object
 #'
-#' This function extracts count information from the column of a Seurat or
-#' SingleCellExperiment object.
+#' This function extracts per-group counts from the column of single-cell
+#' expression object.
 #'
 #' @inheritParams metadataDF
 #' @param col Column as string.
@@ -25,7 +25,8 @@ scColCounts <- function(scObj, col='orig.ident'){
     return(v)
 }
 
-#' Extract count information from Seurat column
+#' Extract information from two columns of a single-cell expression
+#' object
 #'
 #' This function extracts count information from Seurat column.
 #'
@@ -45,3 +46,12 @@ scColCounts <- function(scObj, col='orig.ident'){
 #'
 scColPairCounts <- function(scObj, col1='seurat_clusters', col2='orig.ident')
     return(dplyr::count(metadataDF(scObj), .data[[col1]], .data[[col2]]))
+
+scColPairPercs <- function(scObj, col1, col2, sigDigits = 2){
+    df <- scColPairCounts(scObj, col1, col2)
+    nRep <- length(unique(scCol(scObj, col2)))
+    totals <- as.numeric(unlist(lapply(scColCounts(scObj, col1),
+                                       function(x) rep(x, nRep))))
+    df$perc <- round(df$n / totals * 100, sigDigits)
+    return(df)
+}

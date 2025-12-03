@@ -2,7 +2,7 @@
 title: "scLang"
 author: "Andrei-Florian Stoica"
 package: scLang
-date: November 7, 2025
+date: December 3, 2025
 output: BiocStyle::html_document
 vignette: >
     %\VignetteIndexEntry{scLang}
@@ -36,7 +36,7 @@ BiocManager::install("scLang")
 ```
 
 # Prerequisites
-In addition to `scLang`, you need to install [scater](https://bioconductor.org/packages/release/bioc/html/scater.html)and [scRNAseq](https://bioconductor.org/packages/release/data/experiment/html/scRNAseq.html)
+In addition to `scLang`, you need to install [scater](https://bioconductor.org/packages/release/bioc/html/scater.html) and [scRNAseq](https://bioconductor.org/packages/release/data/experiment/html/scRNAseq.html)
 for this tutorial.
 
 # Loading data
@@ -176,6 +176,14 @@ identical(freq1, freq2)
 head(freq1)
 ```
 
+# Visualization
+
+The `dimPlot` function mimics the essential behavior of the `DimPlot` function 
+from Seurat on `SingleCellExperiment` objects:
+
+```{r}
+dimPlot(sceObj, groupBy='label')
+```
 # Session information {-}
 ```{r}
 sessionInfo()
