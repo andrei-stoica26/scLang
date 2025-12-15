@@ -25,7 +25,7 @@ Imports:
 Suggests:
     BiocStyle,
     knitr,
-    qs,
+    qs2,
     rmarkdown,
     scater,
     scRNAseq,

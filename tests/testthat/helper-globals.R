@@ -1,4 +1,4 @@
 scePath <- system.file('extdata', 'sceObj.qs', package='scLang')
-sceObj <- qs::qread(scePath)
+sceObj <- qs2::qs_read(scePath)
 seuratPath <- system.file('extdata', 'seuratObj.qs', package='scLang')
-seuratObj <- qs::qread(seuratPath)
+seuratObj <- qs2::qs_read(seuratPath)
