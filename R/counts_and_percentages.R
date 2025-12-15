@@ -13,8 +13,8 @@ NULL
 #' @return A frequency vector with the unique column values as names.
 #'
 #' @examples
-#' scePath <- system.file('extdata', 'sceObj.qs', package='scLang')
-#' sceObj <- qs::qread(scePath)
+#' scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
+#' sceObj <- qs2::qs_read(scePath)
 #' scColCounts(sceObj, 'Mutation_Status')
 #'
 #' @export
@@ -38,8 +38,8 @@ scColCounts <- function(scObj, col='orig.ident'){
 #' two categorical columns.
 #'
 #' @examples
-#' scePath <- system.file('extdata', 'sceObj.qs', package='scLang')
-#' sceObj <- qs::qread(scePath)
+#' scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
+#' sceObj <- qs2::qs_read(scePath)
 #' scColPairCounts(sceObj, 'Mutation_Status', 'Cell_Cycle')
 #'
 #' @export

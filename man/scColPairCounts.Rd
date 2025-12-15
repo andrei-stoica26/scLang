@@ -22,8 +22,8 @@ two categorical columns.
 This function extracts count information from Seurat column.
 }
 \examples{
-scePath <- system.file('extdata', 'sceObj.qs', package='scLang')
-sceObj <- qs::qread(scePath)
+scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
+sceObj <- qs2::qs_read(scePath)
 scColPairCounts(sceObj, 'Mutation_Status', 'Cell_Cycle')
 
 }

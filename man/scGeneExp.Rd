@@ -38,8 +38,8 @@ This function extracts the expression of a single gene from a Seurat,
 SingleCellExperiment, dgCMatrix or matrix object.
 }
 \examples{
-scePath <- system.file('extdata', 'sceObj.qs', package='scLang')
-sceObj <- qs::qread(scePath)
+scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
+sceObj <- qs2::qs_read(scePath)
 v <- scGeneExp(sceObj, 'Gene_0491')
 
 }

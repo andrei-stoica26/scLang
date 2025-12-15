@@ -19,8 +19,8 @@ This function extracts per-group counts from the column of single-cell
 expression object.
 }
 \examples{
-scePath <- system.file('extdata', 'sceObj.qs', package='scLang')
-sceObj <- qs::qread(scePath)
+scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
+sceObj <- qs2::qs_read(scePath)
 scColCounts(sceObj, 'Mutation_Status')
 
 }

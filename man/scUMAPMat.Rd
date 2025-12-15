@@ -17,8 +17,8 @@ This function extracts the UMAP matrix from a Seurat or
 SingleCellExperiment object.
 }
 \examples{
-scePath <- system.file('extdata', 'sceObj.qs', package='scLang')
-sceObj <- qs::qread(scePath)
+scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
+sceObj <- qs2::qs_read(scePath)
 umapMat <- scUMAPMat(sceObj)
 
 }

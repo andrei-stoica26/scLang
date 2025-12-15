@@ -8,8 +8,8 @@
 #' @return A character vector.
 #'
 #' @examples
-#' scePath <- system.file('extdata', 'sceObj.qs', package='scLang')
-#' sceObj <- qs::qread(scePath)
+#' scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
+#' sceObj <- qs2::qs_read(scePath)
 #' dimredNames(sceObj)
 #'
 #' @export
@@ -28,8 +28,8 @@ dimredNames <- function(scObj)
 #' @return A metadata data frame.
 #'
 #' @examples
-#' scePath <- system.file('extdata', 'sceObj.qs', package='scLang')
-#' sceObj <- qs::qread(scePath)
+#' scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
+#' sceObj <- qs2::qs_read(scePath)
 #' df <- metadataDF(sceObj)
 #'
 #' @export
@@ -54,8 +54,8 @@ metadataDF <- function(scObj)
 #' @return A vector.
 #'
 #' @examples
-#' scePath <- system.file('extdata', 'sceObj.qs', package='scLang')
-#' sceObj <- qs::qread(scePath)
+#' scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
+#' sceObj <- qs2::qs_read(scePath)
 #' v <- scCol(sceObj, 'Mutation_Status')
 #'
 #' @export
@@ -80,8 +80,8 @@ scCol <- function(scObj, col)
 #' @return A dimensionality reduction matrix.
 #'
 #' @examples
-#' scePath <- system.file('extdata', 'sceObj.qs', package='scLang')
-#' sceObj <- qs::qread(scePath)
+#' scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
+#' sceObj <- qs2::qs_read(scePath)
 #' pcaMat <- scDimredMat(sceObj, 'pca')
 #'
 #'
@@ -102,8 +102,8 @@ scDimredMat <- function(scObj, dimred)
 #' @return An expression matrix.
 #'
 #' @examples
-#' scePath <- system.file('extdata', 'sceObj.qs', package='scLang')
-#' sceObj <- qs::qread(scePath)
+#' scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
+#' sceObj <- qs2::qs_read(scePath)
 #' mat <- scExpMat(sceObj, 'counts')
 #'
 #' @export
@@ -129,8 +129,8 @@ scExpMat <- function(scObj, dataType = c('data',
 #' @return A gene expression vector.
 #'
 #' @examples
-#' scePath <- system.file('extdata', 'sceObj.qs', package='scLang')
-#' sceObj <- qs::qread(scePath)
+#' scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
+#' sceObj <- qs2::qs_read(scePath)
 #' v <- scGeneExp(sceObj, 'Gene_0491')
 #'
 #' @export

@@ -34,8 +34,8 @@ scDimredMat.SingleCellExperiment <- function(scObj, dimred){
 #' @return A PCA matrix.
 #'
 #' @examples
-#' scePath <- system.file('extdata', 'sceObj.qs', package='scLang')
-#' sceObj <- qs::qread(scePath)
+#' scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
+#' sceObj <- qs2::qs_read(scePath)
 #' pcaMat <- scPCAMat(sceObj)
 #'
 #' @export
@@ -53,8 +53,8 @@ scPCAMat <- function(scObj)
 #' @return A UMAP matrix.
 #'
 #' @examples
-#' scePath <- system.file('extdata', 'sceObj.qs', package='scLang')
-#' sceObj <- qs::qread(scePath)
+#' scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
+#' sceObj <- qs2::qs_read(scePath)
 #' umapMat <- scUMAPMat(sceObj)
 #'
 #' @export

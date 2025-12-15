@@ -64,7 +64,7 @@ A dimensionality reduction plot.
 This function creates a dimensionality reduction plot
 }
 \examples{
-scePath <- system.file('extdata', 'sceObj.qs', package='scLang')
+scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
 sceObj <- qs2::qs_read(scePath)
 dimPlot(sceObj, groupBy='Donor')
 

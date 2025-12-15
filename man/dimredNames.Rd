@@ -26,8 +26,8 @@ This function extracts the names of available dimensionality reductions
 from a Seurat or SingleCellExperiment object.
 }
 \examples{
-scePath <- system.file('extdata', 'sceObj.qs', package='scLang')
-sceObj <- qs::qread(scePath)
+scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
+sceObj <- qs2::qs_read(scePath)
 dimredNames(sceObj)
 
 }

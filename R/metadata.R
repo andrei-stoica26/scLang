@@ -56,8 +56,8 @@ metadataDF.SingleCellExperiment <- function(scObj)
 #' @return The names of the metadata columns.
 #'
 #' @examples
-#' scePath <- system.file('extdata', 'sceObj.qs', package='scLang')
-#' sceObj <- qs::qread(scePath)
+#' scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
+#' sceObj <- qs2::qs_read(scePath)
 #' colNames <- metadataNames(sceObj)
 #'
 #' @export
