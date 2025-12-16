@@ -16,12 +16,14 @@ Imports:
     ggplot2,
     grDevices,
     henna,
+    methods,
     rlang,
     S4Vectors,
     SeuratObject,
     SingleCellExperiment,
     stats,
-    SummarizedExperiment
+    SummarizedExperiment,
+    wesanderson
 Suggests:
     BiocStyle,
     knitr,
