@@ -74,8 +74,8 @@ dimPlot <- function(scObj,
 #'
 #' This function creates a dimensionality reduction plot
 #'
-#' @inheritParams dimPlot
-#' @param feature A gene name or metadata column name.
+#' @inheritParams documentFun
+#' @inheritParams pickFeature
 #' @param palette Color palette.
 #'
 #' @return A feature plot.
@@ -103,23 +103,8 @@ featurePlot <- function(scObj,
                         ...){
 
     legendPos <- match.arg(legendPos, c('right', 'top', 'left', 'bottom'))
-    dimred <- dimredName(scObj, dimred)
-    df <- as.data.frame(scDimredMat(scObj, dimred)[, dims])
 
-    if (feature %in% rownames(scObj))
-        df[, 3] <- scExpMat(scObj, genes=feature)[, 1]
-
-    if (feature %in% metadataNames(scObj)){
-        col <- scCol(scObj, feature)
-        if (is(col)[1] != 'numeric')
-            stop(feature, ' is not a numeric column.')
-        df[, 3] <- col
-    }
-
-    if(ncol(df) == 2)
-        stop('Feature not found: ', feature, '.')
-
-    colnames(df)[3] <- feature
+    df <- pickFeature(scObj, feature, dimred, dims)
 
     p <- ggplot(df) + geom_point(aes(x=df[, 1],
                                      y=df[, 2],
