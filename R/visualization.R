@@ -25,14 +25,15 @@ NULL
 #' @export
 #'
 dimPlot <- function(scObj,
-                    title = NULL,
                     groupBy = NULL,
+                    title = NULL,
                     dimred = 'umap',
                     dims = c(1, 2),
                     legendTitle = 'Group',
                     noGroupsLegendLab = 'Object',
                     palette = 'grDevices::rainbow',
-                    alpha=0.6,
+                    pointSize = 0.5,
+                    alpha = 0.7,
                     legendPos = c('right', 'top', 'left', 'bottom'),
                     legendTextSize = 10,
                     legendTitleSize = 10,
@@ -53,6 +54,7 @@ dimPlot <- function(scObj,
     p <- ggplot(df) + geom_point(aes(x=df[, 1],
                                      y=df[, 2],
                                      color=df[, 3]),
+                                 size=pointSize,
                                  alpha=alpha) +
         labs(x=paste0(dimred, '_', dims[1]),
              y=paste0(dimred, '_', dims[2]),
@@ -137,6 +139,8 @@ featurePlot <- function(scObj,
 #'
 #' @inheritParams documentFun
 #' @inheritParams pickFeature
+#' @param xLabAngle x axis label angle.
+#' @param xLabVjust x axis label vertical justification in [0, 1].
 #'
 #' @return A violin plot.
 #'
@@ -155,8 +159,15 @@ violinPlot <- function(scObj,
                        xLab = 'Identity',
                        yLab = 'Expression level',
                        palette = 'grDevices::rainbow',
+                       pointSize = 0.5,
                        alpha = 0.8,
                        legendPos = c('right', 'top', 'left', 'bottom'),
+                       legendTextSize = 10,
+                       legendTitleSize = 10,
+                       axisTextSize = 12,
+                       axisTitleSize = 12,
+                       xLabAngle = 45,
+                       xLabVjust = 0.5,
                        ...){
 
     legendPos <- match.arg(legendPos, c('right', 'top', 'left', 'bottom'))
@@ -165,12 +176,22 @@ violinPlot <- function(scObj,
     nColors <- length(unique(df[, 1]))
 
     p <- ggplot(df, aes(x=df[, 1], y=df[, 2], fill=df[, 1])) +
-        geom_violin(alpha=alpha) + geom_jitter(height=0, width=0.3) +
+        geom_violin(alpha=alpha) +
+        geom_jitter(height=0, width=0.3, size=pointSize) +
         labs(x=xLab,
              y=yLab,
              fill=legendTitle) +
         scale_fill_manual(values=paletteer_c(palette, nColors)) +
-        theme_classic()
+        theme_classic() +
+        theme(legend.position=legendPos,
+              legend.text=element_text(size=legendTextSize),
+              legend.title=element_text(size=legendTitleSize),
+              axis.text.x=element_text(size=axisTextSize,
+                                       angle=xLabAngle,
+                                       vjust=xLabVjust),
+              axis.text.y=element_text(size=axisTextSize),
+              axis.title=element_text(size=axisTitleSize))
+
 
     p <- centerTitle(p, title, ...)
     return(p)

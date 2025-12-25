@@ -6,14 +6,15 @@
 \usage{
 dimPlot(
   scObj,
-  title = NULL,
   groupBy = NULL,
+  title = NULL,
   dimred = "umap",
   dims = c(1, 2),
   legendTitle = "Group",
   noGroupsLegendLab = "Object",
   palette = "grDevices::rainbow",
-  alpha = 0.6,
+  pointSize = 0.5,
+  alpha = 0.7,
   legendPos = c("right", "top", "left", "bottom"),
   legendTextSize = 10,
   legendTitleSize = 10,
@@ -25,10 +26,10 @@ dimPlot(
 \arguments{
 \item{scObj}{A \code{Seurat} or \code{SingleCellExperiment} object.}
 
-\item{title}{Plot title.}
-
 \item{groupBy}{Grouping variable. Must exist in the metadata/coldata of
 the single-cell expression object.}
+
+\item{title}{Plot title.}
 
 \item{dimred}{Dimensionality reduction.}
 
@@ -41,6 +42,8 @@ for the plot.}
 provided (\code{groupBy} is \code{NULL})}
 
 \item{palette}{Color palette.}
+
+\item{pointSize}{Point size.}
 
 \item{alpha}{Opaqueness level.}
 

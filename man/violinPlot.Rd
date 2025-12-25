@@ -13,8 +13,15 @@ violinPlot(
   xLab = "Identity",
   yLab = "Expression level",
   palette = "grDevices::rainbow",
+  pointSize = 0.5,
   alpha = 0.8,
   legendPos = c("right", "top", "left", "bottom"),
+  legendTextSize = 10,
+  legendTitleSize = 10,
+  axisTextSize = 12,
+  axisTitleSize = 12,
+  xLabAngle = 45,
+  xLabVjust = 0.5,
   ...
 )
 }
@@ -36,9 +43,23 @@ the single-cell expression object.}
 
 \item{palette}{Color palette.}
 
+\item{pointSize}{Point size.}
+
 \item{alpha}{Opaqueness level.}
 
 \item{legendPos}{Legend position.}
+
+\item{legendTextSize}{Legend text size.}
+
+\item{legendTitleSize}{Legend title size.}
+
+\item{axisTextSize}{Axis text size.}
+
+\item{axisTitleSize}{Axis title size.}
+
+\item{xLabAngle}{x axis label angle.}
+
+\item{xLabVjust}{x axis label vertical justification in [0, 1].}
 
 \item{...}{Additional arguments passed to \code{centerTitle}.}
 }

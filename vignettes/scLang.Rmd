@@ -2,7 +2,7 @@
 title: "scLang"
 author: "Andrei-Florian Stoica"
 package: scLang
-date: December 3, 2025
+date: December 25, 2025
 output: BiocStyle::html_document
 vignette: >
     %\VignetteIndexEntry{scLang}
@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 
 `scLang` is a suite for package development for scRNA-seq analysis. 
 It offers functions—both getters and setters—that can operate 
-on both Seurat and SingleCellExperiment objects, intended to help 
+on both `Seurat` and `SingleCellExperiment` objects, intended to help 
 developers build tools compatible with both types of input.
 
 # Installation
@@ -39,7 +39,7 @@ BiocManager::install("scLang")
 In addition to `scLang`, you need to install [scater](https://bioconductor.org/packages/release/bioc/html/scater.html) and [scRNAseq](https://bioconductor.org/packages/release/data/experiment/html/scRNAseq.html)
 for this tutorial.
 
-# Loading data
+# Loading and preparing data
 
 This tutorial uses an scRNA-seq human pancreas dataset. After loading the 
 required packages, download the dataset using the `BaronPancreasData` function 
@@ -54,11 +54,8 @@ library(Seurat)
 sceObj <- BaronPancreasData('human')
 ```
 
-# Providing compatibility between Seurat and SingleCellExperiment objects
-
-To illustrate this functionality of hammers, we will first normalize and 
-log-transform the data using the `logNormCounts` function from `scuttle` 
-(loaded automatically with `scater`).
+Next, we will normalize and log-transform the data using the `logNormCounts` 
+function from `scuttle` (loaded automatically with `scater`):
 
 ```{r message=FALSE, warning=FALSE, results=FALSE}
 sceObj <- logNormCounts(sceObj)
@@ -78,8 +75,11 @@ Now we will convert the dataset to a Seurat object:
 seuratObj <- as.Seurat(sceObj)
 ```
 
-Next, we will introduce the `scExpMat` function, which extracts the expression
-matrix from a Seurat or SingleCellExperiment object.
+
+# Extracting the expression matrix
+
+The `scExpMat` function extracts the expression matrix from a `Seurat` or 
+`SingleCellExperiment` object:
 
 ```{r message=FALSE, warning=FALSE}
 mat1 <- scExpMat(sceObj)
@@ -88,15 +88,14 @@ mat2 <- scExpMat(seuratObj)
 identical(mat1, mat2)
 ```
 
-By default, the function extracts normalized and log-transformed single-cell
-expression data, so it looks for the `data` assay for a Seurat object and for
-the `logcounts` assay for a SingleCellExperiment object. This behavior can be
-changed by setting the `dataType` parameter to `counts`—in which case the
-function will look for an assay with this name in the input object.
+**Note**: By default, the function extracts normalized and log-transformed 
+data, looking for the `data` assay for a `Seurat` object, and for the 
+`logcounts` assay for a `SingleCellExperiment` object. This behavior 
+can be changed using the `dataType` parameter.
 
 `scExpMat` can also take a matrix as an argument. This option is useful when 
 building functions allowing users to use either a single-cell expression matrix 
-or an object of a dedicated class (Seurat, SingleCellExperiment) as input:
+or an object of a dedicated class (`Seurat`, `SingleCellExperiment`) as input:
 
 ```{r}
 mat2 <- scExpMat(mat1)
@@ -120,8 +119,10 @@ mat2 <- scExpMat(sceObj, genes=rownames(sceObj)[seq(30, 80)])
 dim(mat2)
 ```
 
-The `scCol` function extracts a column from the metadata of the Seurat object 
-or the coldata of the SingleCellExperiment object:
+# Extracting and altering metadata/coldata columns
+
+The `scCol` function extracts a column from the metadata of the `Seurat` 
+object or the coldata of the `SingleCellExperiment` object:
 
 ```{r}
 col1 <- scCol(seuratObj, 'label')
@@ -131,15 +132,17 @@ head(col1)
 ```
 
 It can also be used to insert a new column. Here, we just make a modified
-copy of the `label` column for the Seurat object:
+copy of the `label` column for the `Seurat` object:
 
 ```{r}
 scCol(seuratObj, 'labelCopy') <- paste0(scCol(seuratObj, 'label'), '_copy')
 head(seuratObj[['labelCopy']])
 ```
 
+# Extracting and altering the metadata/coldata or its column names
+
 The `metadataDF` function extracts the metadata/coldata data frame from a
-Seurat or SingleCellExpression object:
+`Seurat` or `SingleCellExpression` object:
 
 ```{r}
 df1 <- metadataDF(seuratObj)
@@ -158,8 +161,16 @@ identical(colNames1, colNames2)
 head(colNames1)
 ```
 
-**Note**: Just like `scCol`, the `metadataDF` and `metadataNames` functions 
-allow users to alter the value of the stored objects.
+Akin to`scCol`, the `metadataDF` and `metadataNames` functions 
+allow users to alter the value of the stored objects:
+
+```{r}
+metadataDF(sceObj) <- cbind(metadataDF(sceObj), 1)
+metadataNames(sceObj)[length(metadataNames(sceObj))] <- 'extraCol'
+head(metadataDF(sceObj))
+```
+
+# Creating frequency tables
 
 The `scColCounts` and `scColPairCounts` functions are wrappers around 
 `dplyr::count` and enable counting frequencies of elements from one or two 
@@ -178,12 +189,30 @@ head(freq1)
 
 # Visualization
 
+scLang includes three visualization functions that adapt Seurat visualization
+tools, extending their usage to `SingleCellExpression` objects in addition to
+`Seurat` objects.
+
 The `dimPlot` function mimics the essential behavior of the `DimPlot` function 
-from Seurat on `SingleCellExperiment` objects:
+from Seurat:
 
 ```{r}
 dimPlot(sceObj, groupBy='label')
 ```
+
+The `featurePlot` functions mimics the `FeaturePlot` function from Seurat 
+(though using a different color scheme):
+
+```{r}
+featurePlot(sceObj, 'SOX4')
+```
+
+The `violinPlot` functions mimics the `ViolinPlot` function from Seurat:
+
+```{r}
+violinPlot(sceObj, 'SOX4', groupBy='label')
+```
+
 # Session information {-}
 ```{r}
 sessionInfo()

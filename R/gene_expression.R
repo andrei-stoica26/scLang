@@ -1,9 +1,9 @@
 #' @importFrom rlang .data
 #' @importFrom S4Vectors DataFrame
-#' @importFrom SeuratObject Embeddings LayerData Reductions
+#' @importFrom SeuratObject Embeddings LayerData Layers Reductions
 #' @importFrom SingleCellExperiment reducedDim reducedDims
 #' @importFrom stats setNames
-#' @importFrom SummarizedExperiment assay colData colData<-
+#' @importFrom SummarizedExperiment assay assayNames colData colData<-
 #'
 NULL
 
@@ -75,9 +75,7 @@ scGeneExp.matrix <- function(scObj,
 #' @export
 #'
 scExpMat.default <- function(scObj,
-                             dataType = c('data',
-                                          'counts',
-                                          'logcounts'),
+                             dataType,
                              genes = NULL,
                              densify = TRUE)
     stop('Unrecognized input type: `scObj` must be a Seurat, ',
@@ -87,14 +85,12 @@ scExpMat.default <- function(scObj,
 #' @export
 #'
 scExpMat.Seurat <- function(scObj,
-                            dataType = c('data',
-                                         'counts',
-                                         'logcounts'),
+                            dataType = 'data',
                             genes = NULL,
                             densify = TRUE){
-    dataType <- match.arg(dataType, c('data', 'counts', 'logcounts'))
-    if (dataType == 'logcounts')
-        dataType <- 'data'
+    if (!dataType %in% Layers(seuratObj))
+        stop('`', dataType, '` not found among Seurat layers',
+        ' for the selected assay.')
     mat <- LayerData(scObj, layer=dataType)
     if (!is.null(genes))
         mat <- mat[genes, ]
@@ -107,15 +103,12 @@ scExpMat.Seurat <- function(scObj,
 #' @export
 #'
 scExpMat.SingleCellExperiment <- function(scObj,
-                                          dataType = c('data',
-                                                       'counts',
-                                                       'logcounts'),
+                                          dataType = 'logcounts',
                                           genes = NULL,
                                           densify = TRUE){
 
-    dataType <- match.arg(dataType, c('data', 'counts', 'logcounts'))
-    if (dataType == 'data')
-        dataType <- 'logcounts'
+    if (!dataType %in% assayNames(scObj))
+        stop('Assay `', dataType, '` not found.')
     mat <- assay(scObj, dataType)
     if (!is.null(genes))
         mat <- mat[genes, ]
@@ -128,9 +121,7 @@ scExpMat.SingleCellExperiment <- function(scObj,
 #' @export
 #'
 scExpMat.dgCMatrix <- function(scObj,
-                               dataType = c('data',
-                                            'counts',
-                                            'logcounts'),
+                               dataType,
                                genes = NULL,
                                densify = TRUE){
 
@@ -145,9 +136,7 @@ scExpMat.dgCMatrix <- function(scObj,
 #' @export
 #'
 scExpMat.matrix <- function(scObj,
-                            dataType = c('data',
-                                         'counts',
-                                         'logcounts'),
+                            dataType,
                             genes = NULL,
                             densify = TRUE){
 

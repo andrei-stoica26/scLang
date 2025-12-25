@@ -9,40 +9,15 @@
 \alias{scExpMat}
 \title{Extracts the expression matrix from object.}
 \usage{
-\method{scExpMat}{default}(
-  scObj,
-  dataType = c("data", "counts", "logcounts"),
-  genes = NULL,
-  densify = TRUE
-)
+\method{scExpMat}{default}(scObj, dataType, genes = NULL, densify = TRUE)
 
-\method{scExpMat}{Seurat}(
-  scObj,
-  dataType = c("data", "counts", "logcounts"),
-  genes = NULL,
-  densify = TRUE
-)
+\method{scExpMat}{Seurat}(scObj, dataType = "data", genes = NULL, densify = TRUE)
 
-\method{scExpMat}{SingleCellExperiment}(
-  scObj,
-  dataType = c("data", "counts", "logcounts"),
-  genes = NULL,
-  densify = TRUE
-)
+\method{scExpMat}{SingleCellExperiment}(scObj, dataType = "logcounts", genes = NULL, densify = TRUE)
 
-\method{scExpMat}{dgCMatrix}(
-  scObj,
-  dataType = c("data", "counts", "logcounts"),
-  genes = NULL,
-  densify = TRUE
-)
+\method{scExpMat}{dgCMatrix}(scObj, dataType, genes = NULL, densify = TRUE)
 
-\method{scExpMat}{matrix}(
-  scObj,
-  dataType = c("data", "counts", "logcounts"),
-  genes = NULL,
-  densify = TRUE
-)
+\method{scExpMat}{matrix}(scObj, dataType, genes = NULL, densify = TRUE)
 
 scExpMat(
   scObj,

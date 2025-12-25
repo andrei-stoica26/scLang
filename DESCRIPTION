@@ -1,7 +1,7 @@
 Package: scLang
 Type: Package
 Title: A unified language for interacting with Seurat and SingleCellExperiment
-Version: 0.1.0
+Version: 0.99.0
 Authors@R: person('Andrei-Florian', 'Stoica', 
       email='andreistoica@foxmail.com',
      role=c('aut','cre'),
