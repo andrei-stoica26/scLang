@@ -2,26 +2,20 @@
 % Please edit documentation in R/visualization_utils.R
 \name{pickFeature}
 \alias{pickFeature}
-\title{Creates a feature-based data frame to be used by featurePlot or violinPlot}
+\title{Extract feature data to be used by \code{featurePlot} or \code{violinPlot}}
 \usage{
-pickFeature(scObj, feature, dimred, dims)
+pickFeature(scObj, feature)
 }
 \arguments{
 \item{scObj}{A \code{Seurat} or \code{SingleCellExperiment} object.}
 
 \item{feature}{A gene name or metadata column name.}
-
-\item{dimred}{Dimensionality reduction.}
-
-\item{dims}{A numeric vector of size 2 representing the dimensions selected
-for the plot.}
 }
 \value{
-A data frame with three columns in which the first two
-correspond to a dimensionality reduction and the third is the feature score.
+A numeric vector.
 }
 \description{
-This function creates a feature-based data frame to be used by featurePlot
-or violinPlot
+This function extracts feature data to be used by \code{featurePlot}
+or \code{violinPlot}.
 }
 \keyword{internal}

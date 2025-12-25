@@ -12,7 +12,7 @@ dimPlot(
   dims = c(1, 2),
   legendTitle = "Group",
   noGroupsLegendLab = "Object",
-  paletteFun = rainbow,
+  palette = "grDevices::rainbow",
   alpha = 0.6,
   legendPos = c("right", "top", "left", "bottom"),
   legendTextSize = 10,
@@ -40,8 +40,7 @@ for the plot.}
 \item{noGroupsLegendLab}{Legend label to be used when no grouping is
 provided (\code{groupBy} is \code{NULL})}
 
-\item{paletteFun}{Palette function. Must accept the number of colors as the
-first argument and require no other arguments.}
+\item{palette}{Color palette.}
 
 \item{alpha}{Opaqueness level.}
 
@@ -66,6 +65,6 @@ This function creates a dimensionality reduction plot
 \examples{
 scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
 sceObj <- qs2::qs_read(scePath)
-dimPlot(sceObj, groupBy='Donor')
+dimPlot(sceObj, groupBy='Mutation_Status')
 
 }

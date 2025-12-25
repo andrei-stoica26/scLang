@@ -8,8 +8,8 @@
 #' the single-cell expression object.
 #' @param dims A numeric vector of size 2 representing the dimensions selected
 #' for the plot.
-#' @param xLab Label of x axis.
-#' @param yLab Label of y axis.
+#' @param xLab x axis label.
+#' @param yLab y axis label.
 #' @param legendTitle Legend title.
 #' @param legendLabs Legend labels.
 #' @param legendPos Legend position.

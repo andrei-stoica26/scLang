@@ -1,7 +1,8 @@
-#' @importFrom ggplot2 aes element_text ggplot geom_point labs scale_color_gradientn scale_color_manual theme theme_classic
+#' @importFrom ggplot2 aes element_text ggplot geom_jitter geom_point geom_violin labs scale_color_gradientn scale_color_manual scale_fill_manual theme theme_classic
 #' @importFrom grDevices rainbow
 #' @importFrom henna centerTitle
 #' @importFrom methods is
+#' @importFrom paletteer paletteer_c
 #' @importFrom wesanderson wes_palette
 #'
 NULL
@@ -11,8 +12,6 @@ NULL
 #' This function creates a dimensionality reduction plot
 #'
 #' @inheritParams documentFun
-#' @param paletteFun Palette function. Must accept the number of colors as the
-#' first argument and require no other arguments.
 #' @param noGroupsLegendLab Legend label to be used when no grouping is
 #' provided (\code{groupBy} is \code{NULL})
 #'
@@ -21,7 +20,7 @@ NULL
 #' @examples
 #' scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
 #' sceObj <- qs2::qs_read(scePath)
-#' dimPlot(sceObj, groupBy='Donor')
+#' dimPlot(sceObj, groupBy='Mutation_Status')
 #'
 #' @export
 #'
@@ -32,7 +31,7 @@ dimPlot <- function(scObj,
                     dims = c(1, 2),
                     legendTitle = 'Group',
                     noGroupsLegendLab = 'Object',
-                    paletteFun = rainbow,
+                    palette = 'grDevices::rainbow',
                     alpha=0.6,
                     legendPos = c('right', 'top', 'left', 'bottom'),
                     legendTextSize = 10,
@@ -58,7 +57,7 @@ dimPlot <- function(scObj,
         labs(x=paste0(dimred, '_', dims[1]),
              y=paste0(dimred, '_', dims[2]),
              color=legendTitle) +
-        scale_color_manual(values=paletteFun(nColors)) +
+        scale_color_manual(values=paletteer_c(palette, nColors)) +
         theme_classic() +
         theme(legend.position=legendPos,
               legend.text=element_text(size=legendTextSize),
@@ -70,13 +69,13 @@ dimPlot <- function(scObj,
     return(p)
 }
 
-#' Creates a dimensionality reduction plot
+#' Create a dimensionality reduction plot to represent a feature
 #'
-#' This function creates a dimensionality reduction plot
+#' This function creates a dimensionality reduction plot to represent a
+#' feature (gene expression or numeric metadata column).
 #'
 #' @inheritParams documentFun
 #' @inheritParams pickFeature
-#' @param palette Color palette.
 #'
 #' @return A feature plot.
 #'
@@ -92,7 +91,7 @@ featurePlot <- function(scObj,
                         title = feature,
                         dimred = 'umap',
                         dims = c(1, 2),
-                        legendTitle = feature,
+                        legendTitle = NULL,
                         palette = wes_palette('Royal1')[c(3, 2)],
                         alpha = 0.6,
                         legendPos = c('right', 'top', 'left', 'bottom'),
@@ -104,7 +103,13 @@ featurePlot <- function(scObj,
 
     legendPos <- match.arg(legendPos, c('right', 'top', 'left', 'bottom'))
 
-    df <- pickFeature(scObj, feature, dimred, dims)
+    if (length(dims) != 2)
+        stop('`dims` must be a vector of size 2.')
+
+    dimred <- dimredName(scObj, dimred)
+    df <- as.data.frame(scDimredMat(scObj, dimred)[, dims])
+    df[, 3] <- pickFeature(scObj, feature)
+    colnames(df)[3] <- feature
 
     p <- ggplot(df) + geom_point(aes(x=df[, 1],
                                      y=df[, 2],
@@ -125,3 +130,48 @@ featurePlot <- function(scObj,
     return(p)
 }
 
+#' Create a violin plot to represent a feature
+#'
+#' This function creates a violin plot to represent a
+#' feature (gene expression or numeric metadata column).
+#'
+#' @inheritParams documentFun
+#' @inheritParams pickFeature
+#'
+#' @return A violin plot.
+#'
+#' @examples
+#' scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
+#' sceObj <- qs2::qs_read(scePath)
+#' violinPlot(sceObj, 'Gene_0289')
+#'
+#' @export
+#'
+violinPlot <- function(scObj,
+                       feature = rownames(scObj)[1],
+                       groupBy = metadataNames(scObj)[1],
+                       title = feature,
+                       legendTitle = NULL,
+                       xLab = 'Identity',
+                       yLab = 'Expression level',
+                       palette = 'grDevices::rainbow',
+                       alpha = 0.8,
+                       legendPos = c('right', 'top', 'left', 'bottom'),
+                       ...){
+
+    legendPos <- match.arg(legendPos, c('right', 'top', 'left', 'bottom'))
+    df <- data.frame(x = scCol(scObj, groupBy),
+                     y = pickFeature(scObj, feature))
+    nColors <- length(unique(df[, 1]))
+
+    p <- ggplot(df, aes(x=df[, 1], y=df[, 2], fill=df[, 1])) +
+        geom_violin(alpha=alpha) + geom_jitter(height=0, width=0.3) +
+        labs(x=xLab,
+             y=yLab,
+             fill=legendTitle) +
+        scale_fill_manual(values=paletteer_c(palette, nColors)) +
+        theme_classic()
+
+    p <- centerTitle(p, title, ...)
+    return(p)
+}

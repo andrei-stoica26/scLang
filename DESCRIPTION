@@ -17,6 +17,7 @@ Imports:
     grDevices,
     henna,
     methods,
+    paletteer,
     rlang,
     S4Vectors,
     SeuratObject,

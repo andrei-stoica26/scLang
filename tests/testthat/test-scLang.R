@@ -31,4 +31,8 @@ test_that("compatibility functions work", {
 test_that("visualization functions work", {
     p <- dimPlot(sceObj, groupBy='Donor')
     expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
+    p <- featurePlot(sceObj, 'Gene_0289')
+    expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
+    p <- violinPlot(sceObj, 'Gene_0289')
+    expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
 })
