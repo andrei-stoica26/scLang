@@ -13,6 +13,8 @@ test_that("compatibility functions work", {
                  setNames(56, 'G2M'))
     expect_equal(scColPairCounts(sceObj, 'Mutation_Status', 'Cell_Cycle')[1, 3],
                  24)
+    expect_equal(scColPairPercs(sceObj, 'Mutation_Status', 'Cell_Cycle')[1, 4],
+                 22.86)
 
     expect_equal(length(scGeneExp(sceObj, 'Gene_0480')), 200)
     expect_equal(dim(scExpMat(sceObj)), c(500, 200))
