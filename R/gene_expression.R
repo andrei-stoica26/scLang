@@ -27,9 +27,8 @@ scGeneExp.Seurat <- function(scObj,
                              dataType = c('counts',
                                           'data',
                                           'logcounts')){
-    dataType <- match.arg(dataType, c('counts', 'data', 'logcounts'))
-    if (dataType == 'logcounts')
-        dataType <- 'data'
+    if (!dataType %in% Layers(scObj))
+        stop('Layer `', dataType, '` not found for the current assay.')
     return(LayerData(scObj, dataType)[gene, ])
 }
 
@@ -44,9 +43,8 @@ scGeneExp.SingleCellExperiment <- function(scObj,
                                            dataType = c('counts',
                                                         'data',
                                                         'logcounts')){
-    dataType <- match.arg(dataType, c('counts', 'data', 'logcounts'))
-    if (dataType == 'data')
-        dataType <- 'logcounts'
+    if (!dataType %in% assayNames(scObj))
+        stop('Assay `', dataType, '` not found.')
     return(assay(scObj, dataType)[gene, ])
 }
 
@@ -88,9 +86,8 @@ scExpMat.Seurat <- function(scObj,
                             dataType = 'data',
                             genes = NULL,
                             densify = TRUE){
-    if (!dataType %in% Layers(seuratObj))
-        stop('`', dataType, '` not found among Seurat layers',
-        ' for the selected assay.')
+    if (!dataType %in% Layers(scObj))
+        stop('Layer `', dataType, '` not found for the current assay.')
     mat <- LayerData(scObj, layer=dataType)
     if (!is.null(genes))
         mat <- mat[genes, ]
