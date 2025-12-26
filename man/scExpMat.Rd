@@ -19,26 +19,18 @@
 
 \method{scExpMat}{matrix}(scObj, slot = NULL, genes = NULL, densify = TRUE)
 
-scExpMat(
-  scObj,
-  dataType = c("data", "counts", "logcounts"),
-  genes = NULL,
-  densify = TRUE
-)
+scExpMat(scObj, slot, genes = NULL, densify = TRUE)
 }
 \arguments{
 \item{scObj}{A \code{Seurat}, \code{SingleCellExperiment},
 \code{dgCMatrix} or \code{matrix} object.}
 
-\item{slot}{Expression data type. Must be one of 'counts' and
-'logcounts'.}
+\item{slot}{Gene expression slot. Ignored if \code{scObj} is of class
+\code{dgCMatrix} or \code{matrix}.}
 
 \item{genes}{Selected genes. If \code{NULL}, all genes will be retained.}
 
 \item{densify}{Whether to convert to dense matrix.}
-
-\item{dataType}{Expression data type. Ignored if \code{scObj} is of class
-\code{dgCMatrix} or \code{matrix}.}
 }
 \value{
 An expression matrix.

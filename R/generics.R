@@ -108,11 +108,7 @@ scDimredMat <- function(scObj, dimred)
 #'
 #' @export
 #'
-scExpMat <- function(scObj, dataType = c('data',
-                                         'counts',
-                                         'logcounts'),
-                     genes = NULL,
-                     densify = TRUE)
+scExpMat <- function(scObj, slot, genes = NULL, densify = TRUE)
     UseMethod(generic='scExpMat', object=scObj)
 
 #' Extracts the expression of a single gene
@@ -123,7 +119,7 @@ scExpMat <- function(scObj, dataType = c('data',
 #' @param scObj A \code{Seurat}, \code{SingleCellExperiment},
 #' \code{dgCMatrix} or \code{matrix} object.
 #' @param gene Selected gene.
-#' @param dataType Expression data type. Ignored if \code{scObj} is of class
+#' @param slot Gene expression slot. Ignored if \code{scObj} is of class
 #' \code{dgCMatrix} or \code{matrix}.
 #'
 #' @return A gene expression vector.
@@ -135,7 +131,5 @@ scExpMat <- function(scObj, dataType = c('data',
 #'
 #' @export
 #'
-scGeneExp <- function(scObj, gene, dataType = c('data',
-                                                'counts',
-                                                'logcounts'))
+scGeneExp <- function(scObj, gene, slot)
     UseMethod(generic='scGeneExp', object=scObj)

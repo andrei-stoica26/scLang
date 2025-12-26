@@ -13,6 +13,8 @@ scColPairPercs(scObj, col1, col2, sigDigits = 2)
 \item{col1}{Column as string.}
 
 \item{col2}{Column as string.}
+
+\item{sigDigits}{Number of significant digits.}
 }
 \value{
 A data frame listing the percentages of all combinations of pairs

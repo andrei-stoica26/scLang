@@ -55,6 +55,7 @@ scColPairCounts <- function(scObj, col1='seurat_clusters', col2='orig.ident')
 #' expression object.
 #'
 #' @inheritParams scColPairCounts
+#' @param sigDigits Number of significant digits.
 #'
 #' @return A data frame listing the percentages of all combinations of pairs
 #' from two categorical columns.

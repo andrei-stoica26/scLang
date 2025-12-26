@@ -19,7 +19,7 @@
 
 \method{scGeneExp}{matrix}(scObj, gene, slot = NULL)
 
-scGeneExp(scObj, gene, dataType = c("data", "counts", "logcounts"))
+scGeneExp(scObj, gene, slot)
 }
 \arguments{
 \item{scObj}{A \code{Seurat}, \code{SingleCellExperiment},
@@ -27,10 +27,7 @@ scGeneExp(scObj, gene, dataType = c("data", "counts", "logcounts"))
 
 \item{gene}{Selected gene.}
 
-\item{slot}{Expression data type. Must be one of 'counts' and
-'logcounts'.}
-
-\item{dataType}{Expression data type. Ignored if \code{scObj} is of class
+\item{slot}{Gene expression slot. Ignored if \code{scObj} is of class
 \code{dgCMatrix} or \code{matrix}.}
 }
 \value{
