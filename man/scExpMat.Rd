@@ -9,15 +9,15 @@
 \alias{scExpMat}
 \title{Extracts the expression matrix from object.}
 \usage{
-\method{scExpMat}{default}(scObj, dataType = NULL, genes = NULL, densify = TRUE)
+\method{scExpMat}{default}(scObj, slot = NULL, genes = NULL, densify = TRUE)
 
-\method{scExpMat}{Seurat}(scObj, dataType = "data", genes = NULL, densify = TRUE)
+\method{scExpMat}{Seurat}(scObj, slot = "data", genes = NULL, densify = TRUE)
 
-\method{scExpMat}{SingleCellExperiment}(scObj, dataType = "logcounts", genes = NULL, densify = TRUE)
+\method{scExpMat}{SingleCellExperiment}(scObj, slot = "logcounts", genes = NULL, densify = TRUE)
 
-\method{scExpMat}{dgCMatrix}(scObj, dataType = NULL, genes = NULL, densify = TRUE)
+\method{scExpMat}{dgCMatrix}(scObj, slot = NULL, genes = NULL, densify = TRUE)
 
-\method{scExpMat}{matrix}(scObj, dataType = NULL, genes = NULL, densify = TRUE)
+\method{scExpMat}{matrix}(scObj, slot = NULL, genes = NULL, densify = TRUE)
 
 scExpMat(
   scObj,
@@ -30,12 +30,15 @@ scExpMat(
 \item{scObj}{A \code{Seurat}, \code{SingleCellExperiment},
 \code{dgCMatrix} or \code{matrix} object.}
 
-\item{dataType}{Expression data type. Ignored if \code{scObj} is of class
-\code{dgCMatrix} or \code{matrix}.}
+\item{slot}{Expression data type. Must be one of 'counts' and
+'logcounts'.}
 
 \item{genes}{Selected genes. If \code{NULL}, all genes will be retained.}
 
 \item{densify}{Whether to convert to dense matrix.}
+
+\item{dataType}{Expression data type. Ignored if \code{scObj} is of class
+\code{dgCMatrix} or \code{matrix}.}
 }
 \value{
 An expression matrix.

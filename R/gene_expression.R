@@ -11,22 +11,23 @@ NULL
 #' @rdname scGeneExp
 #' @export
 #'
-scGeneExp.default <- function(scObj, gene, dataType = NULL)
+scGeneExp.default <- function(scObj, gene, slot = NULL)
     stop('Unrecognized input type: scObj must be a Seurat, ',
          'SingleCellExpression, matrix or dgCMatrix object')
 
-#' @param dataType Expression data type. Must be one of 'counts' and 'data'.
+#' @param slot Slot where expression data is accessed. Default is 'data' for
+#' Seurat objects and 'logcounts' for SingleCellExpression objects.
 #'
 #' @rdname scGeneExp
 #' @export
 #'
-scGeneExp.Seurat <- function(scObj, gene, dataType = 'data'){
-    if (!dataType %in% Layers(scObj))
-        stop('Layer `', dataType, '` not found for the current assay.')
-    return(LayerData(scObj, dataType)[gene, ])
+scGeneExp.Seurat <- function(scObj, gene, slot = 'data'){
+    if (!slot %in% Layers(scObj))
+        stop('Layer `', slot, '` not found for the current assay.')
+    return(LayerData(scObj, slot)[gene, ])
 }
 
-#' @param dataType Expression data type. Must be one of 'counts' and
+#' @param slot Expression data type. Must be one of 'counts' and
 #' 'logcounts'.
 #'
 #' @rdname scGeneExp
@@ -34,22 +35,22 @@ scGeneExp.Seurat <- function(scObj, gene, dataType = 'data'){
 #'
 scGeneExp.SingleCellExperiment <- function(scObj,
                                            gene,
-                                           dataType = 'logcounts'){
-    if (!dataType %in% assayNames(scObj))
-        stop('Assay `', dataType, '` not found.')
-    return(assay(scObj, dataType)[gene, ])
+                                           slot = 'logcounts'){
+    if (!slot %in% assayNames(scObj))
+        stop('Assay `', slot, '` not found.')
+    return(assay(scObj, slot)[gene, ])
 }
 
 #' @rdname scGeneExp
 #' @export
 #'
-scGeneExp.dgCMatrix <- function(scObj, gene, dataType = NULL)
+scGeneExp.dgCMatrix <- function(scObj, gene, slot = NULL)
     return(scObj[gene, ])
 
 #' @rdname scGeneExp
 #' @export
 #'
-scGeneExp.matrix <- function(scObj, gene, dataType = NULL)
+scGeneExp.matrix <- function(scObj, gene, slot = NULL)
     return(scObj[gene, ])
 
 ################################################################################
@@ -57,7 +58,7 @@ scGeneExp.matrix <- function(scObj, gene, dataType = NULL)
 #' @export
 #'
 scExpMat.default <- function(scObj,
-                             dataType = NULL,
+                             slot = NULL,
                              genes = NULL,
                              densify = TRUE)
     stop('Unrecognized input type: `scObj` must be a Seurat, ',
@@ -67,12 +68,12 @@ scExpMat.default <- function(scObj,
 #' @export
 #'
 scExpMat.Seurat <- function(scObj,
-                            dataType = 'data',
+                            slot = 'data',
                             genes = NULL,
                             densify = TRUE){
-    if (!dataType %in% Layers(scObj))
-        stop('Layer `', dataType, '` not found for the current assay.')
-    mat <- LayerData(scObj, layer=dataType)
+    if (!slot %in% Layers(scObj))
+        stop('Layer `', slot, '` not found for the current assay.')
+    mat <- LayerData(scObj, layer=slot)
     if (!is.null(genes))
         mat <- mat[genes, ]
     if(densify)
@@ -84,13 +85,13 @@ scExpMat.Seurat <- function(scObj,
 #' @export
 #'
 scExpMat.SingleCellExperiment <- function(scObj,
-                                          dataType = 'logcounts',
+                                          slot = 'logcounts',
                                           genes = NULL,
                                           densify = TRUE){
 
-    if (!dataType %in% assayNames(scObj))
-        stop('Assay `', dataType, '` not found.')
-    mat <- assay(scObj, dataType)
+    if (!slot %in% assayNames(scObj))
+        stop('Assay `', slot, '` not found.')
+    mat <- assay(scObj, slot)
     if (!is.null(genes))
         mat <- mat[genes, ]
     if(densify)
@@ -102,7 +103,7 @@ scExpMat.SingleCellExperiment <- function(scObj,
 #' @export
 #'
 scExpMat.dgCMatrix <- function(scObj,
-                               dataType = NULL,
+                               slot = NULL,
                                genes = NULL,
                                densify = TRUE){
 
@@ -117,7 +118,7 @@ scExpMat.dgCMatrix <- function(scObj,
 #' @export
 #'
 scExpMat.matrix <- function(scObj,
-                            dataType = NULL,
+                            slot = NULL,
                             genes = NULL,
                             densify = TRUE){
 

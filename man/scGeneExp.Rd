@@ -9,15 +9,15 @@
 \alias{scGeneExp}
 \title{Extracts the expression of a single gene}
 \usage{
-\method{scGeneExp}{default}(scObj, gene, dataType = NULL)
+\method{scGeneExp}{default}(scObj, gene, slot = NULL)
 
-\method{scGeneExp}{Seurat}(scObj, gene, dataType = "data")
+\method{scGeneExp}{Seurat}(scObj, gene, slot = "data")
 
-\method{scGeneExp}{SingleCellExperiment}(scObj, gene, dataType = "logcounts")
+\method{scGeneExp}{SingleCellExperiment}(scObj, gene, slot = "logcounts")
 
-\method{scGeneExp}{dgCMatrix}(scObj, gene, dataType = NULL)
+\method{scGeneExp}{dgCMatrix}(scObj, gene, slot = NULL)
 
-\method{scGeneExp}{matrix}(scObj, gene, dataType = NULL)
+\method{scGeneExp}{matrix}(scObj, gene, slot = NULL)
 
 scGeneExp(scObj, gene, dataType = c("data", "counts", "logcounts"))
 }
@@ -26,6 +26,9 @@ scGeneExp(scObj, gene, dataType = c("data", "counts", "logcounts"))
 \code{dgCMatrix} or \code{matrix} object.}
 
 \item{gene}{Selected gene.}
+
+\item{slot}{Expression data type. Must be one of 'counts' and
+'logcounts'.}
 
 \item{dataType}{Expression data type. Ignored if \code{scObj} is of class
 \code{dgCMatrix} or \code{matrix}.}
