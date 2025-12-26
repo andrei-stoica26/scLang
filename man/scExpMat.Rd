@@ -9,15 +9,15 @@
 \alias{scExpMat}
 \title{Extracts the expression matrix from object.}
 \usage{
-\method{scExpMat}{default}(scObj, dataType, genes = NULL, densify = TRUE)
+\method{scExpMat}{default}(scObj, dataType = NULL, genes = NULL, densify = TRUE)
 
 \method{scExpMat}{Seurat}(scObj, dataType = "data", genes = NULL, densify = TRUE)
 
 \method{scExpMat}{SingleCellExperiment}(scObj, dataType = "logcounts", genes = NULL, densify = TRUE)
 
-\method{scExpMat}{dgCMatrix}(scObj, dataType, genes = NULL, densify = TRUE)
+\method{scExpMat}{dgCMatrix}(scObj, dataType = NULL, genes = NULL, densify = TRUE)
 
-\method{scExpMat}{matrix}(scObj, dataType, genes = NULL, densify = TRUE)
+\method{scExpMat}{matrix}(scObj, dataType = NULL, genes = NULL, densify = TRUE)
 
 scExpMat(
   scObj,

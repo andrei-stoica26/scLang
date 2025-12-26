@@ -9,15 +9,15 @@
 \alias{scGeneExp}
 \title{Extracts the expression of a single gene}
 \usage{
-\method{scGeneExp}{default}(scObj, gene, dataType = c("counts", "data", "logcounts"))
+\method{scGeneExp}{default}(scObj, gene, dataType = NULL)
 
-\method{scGeneExp}{Seurat}(scObj, gene, dataType = c("counts", "data", "logcounts"))
+\method{scGeneExp}{Seurat}(scObj, gene, dataType = "data")
 
-\method{scGeneExp}{SingleCellExperiment}(scObj, gene, dataType = c("counts", "data", "logcounts"))
+\method{scGeneExp}{SingleCellExperiment}(scObj, gene, dataType = "logcounts")
 
-\method{scGeneExp}{dgCMatrix}(scObj, gene, dataType = c("counts", "data", "logcounts"))
+\method{scGeneExp}{dgCMatrix}(scObj, gene, dataType = NULL)
 
-\method{scGeneExp}{matrix}(scObj, gene, dataType = c("counts", "data", "logcounts"))
+\method{scGeneExp}{matrix}(scObj, gene, dataType = NULL)
 
 scGeneExp(scObj, gene, dataType = c("data", "counts", "logcounts"))
 }

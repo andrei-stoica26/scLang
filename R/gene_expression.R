@@ -11,9 +11,7 @@ NULL
 #' @rdname scGeneExp
 #' @export
 #'
-scGeneExp.default <- function(scObj, gene, dataType = c('counts',
-                                                        'data',
-                                                        'logcounts'))
+scGeneExp.default <- function(scObj, gene, dataType = NULL)
     stop('Unrecognized input type: scObj must be a Seurat, ',
          'SingleCellExpression, matrix or dgCMatrix object')
 
@@ -22,11 +20,7 @@ scGeneExp.default <- function(scObj, gene, dataType = c('counts',
 #' @rdname scGeneExp
 #' @export
 #'
-scGeneExp.Seurat <- function(scObj,
-                             gene,
-                             dataType = c('counts',
-                                          'data',
-                                          'logcounts')){
+scGeneExp.Seurat <- function(scObj, gene, dataType = 'data'){
     if (!dataType %in% Layers(scObj))
         stop('Layer `', dataType, '` not found for the current assay.')
     return(LayerData(scObj, dataType)[gene, ])
@@ -40,9 +34,7 @@ scGeneExp.Seurat <- function(scObj,
 #'
 scGeneExp.SingleCellExperiment <- function(scObj,
                                            gene,
-                                           dataType = c('counts',
-                                                        'data',
-                                                        'logcounts')){
+                                           dataType = 'logcounts'){
     if (!dataType %in% assayNames(scObj))
         stop('Assay `', dataType, '` not found.')
     return(assay(scObj, dataType)[gene, ])
@@ -51,21 +43,13 @@ scGeneExp.SingleCellExperiment <- function(scObj,
 #' @rdname scGeneExp
 #' @export
 #'
-scGeneExp.dgCMatrix <- function(scObj,
-                                gene,
-                                dataType = c('counts',
-                                             'data',
-                                             'logcounts'))
+scGeneExp.dgCMatrix <- function(scObj, gene, dataType = NULL)
     return(scObj[gene, ])
 
 #' @rdname scGeneExp
 #' @export
 #'
-scGeneExp.matrix <- function(scObj,
-                             gene,
-                             dataType = c('counts',
-                                          'data',
-                                          'logcounts'))
+scGeneExp.matrix <- function(scObj, gene, dataType = NULL)
     return(scObj[gene, ])
 
 ################################################################################
@@ -73,7 +57,7 @@ scGeneExp.matrix <- function(scObj,
 #' @export
 #'
 scExpMat.default <- function(scObj,
-                             dataType,
+                             dataType = NULL,
                              genes = NULL,
                              densify = TRUE)
     stop('Unrecognized input type: `scObj` must be a Seurat, ',
@@ -118,7 +102,7 @@ scExpMat.SingleCellExperiment <- function(scObj,
 #' @export
 #'
 scExpMat.dgCMatrix <- function(scObj,
-                               dataType,
+                               dataType = NULL,
                                genes = NULL,
                                densify = TRUE){
 
@@ -133,7 +117,7 @@ scExpMat.dgCMatrix <- function(scObj,
 #' @export
 #'
 scExpMat.matrix <- function(scObj,
-                            dataType,
+                            dataType = NULL,
                             genes = NULL,
                             densify = TRUE){
 
