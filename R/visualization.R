@@ -192,7 +192,6 @@ violinPlot <- function(scObj,
               axis.text.y=element_text(size=axisTextSize),
               axis.title=element_text(size=axisTitleSize))
 
-
     p <- centerTitle(p, title, ...)
     return(p)
 }

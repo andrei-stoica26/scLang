@@ -16,7 +16,7 @@ pickFeature <- function(scObj, feature){
 
     if (feature %in% metadataNames(scObj)){
         col <- scCol(scObj, feature)
-        if (is(col)[1] != 'numeric')
+        if (!is.numeric(col))
             stop(feature, ' is not a numeric column.')
         return(col)
     }

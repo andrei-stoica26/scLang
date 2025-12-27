@@ -77,7 +77,7 @@ scExpMat.Seurat <- function(scObj,
     if (!is.null(genes))
         mat <- mat[genes, ]
     if(densify)
-        mat <- suppressWarnings(as.matrix(mat))
+        mat <- as.matrix(mat)
     return(mat)
 }
 
@@ -95,7 +95,7 @@ scExpMat.SingleCellExperiment <- function(scObj,
     if (!is.null(genes))
         mat <- mat[genes, ]
     if(densify)
-        mat <- suppressWarnings(as.matrix(mat))
+        mat <- as.matrix(mat)
     return(mat)
 }
 
@@ -110,7 +110,7 @@ scExpMat.dgCMatrix <- function(scObj,
     if (!is.null(genes))
         mat <- scObj[genes, ]
     if(densify)
-        mat <- suppressWarnings(as.matrix(mat))
+        mat <- as.matrix(mat)
     return(mat)
 }
 
