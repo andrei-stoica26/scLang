@@ -21,8 +21,8 @@ A data frame listing the percentages of all combinations of pairs
 from two categorical columns.
 }
 \description{
-This function extracts percentage information from two columns of a single-cell
-expression object.
+This function extracts percentage information from two columns of a
+single-cell expression object.
 }
 \examples{
 scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')

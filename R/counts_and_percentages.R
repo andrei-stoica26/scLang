@@ -51,8 +51,8 @@ scColPairCounts <- function(scObj, col1='seurat_clusters', col2='orig.ident')
 #' Extract percentages from two columns of a single-cell expression
 #' object
 #'
-#' This function extracts percentage information from two columns of a single-cell
-#' expression object.
+#' This function extracts percentage information from two columns of a
+#' single-cell expression object.
 #'
 #' @inheritParams scColPairCounts
 #' @param sigDigits Number of significant digits.

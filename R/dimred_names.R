@@ -20,8 +20,8 @@ dimredName <- function(scObj, dimred){
         stop('No `', lowerDimred, '` or `', upperDimred,
              '` reduction was found in the object.')
     if (length(dimName) > 1){
-        warning('Both `', lowerDimred, '` and ', upperDimred, '` reductions were ',
-                'found. Returning ', dimred, '.')
+        warning('Both `', lowerDimred, '` and ', upperDimred,
+                '` reductions were found. Returning ', dimred, '.')
         return(dimred)
     }
     return(dimName)

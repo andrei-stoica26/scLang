@@ -1,5 +1,6 @@
-#' @importFrom ggplot2 aes element_text ggplot geom_jitter geom_point geom_violin labs scale_color_gradientn scale_color_manual scale_fill_manual theme theme_classic
-#' @importFrom grDevices rainbow
+#' @importFrom ggplot2 aes element_text ggplot geom_jitter geom_point
+#' @importFrom ggplot2 geom_violin labs scale_color_gradientn
+#' @importFrom ggplot2 scale_color_manual scale_fill_manual theme theme_classic
 #' @importFrom henna centerTitle
 #' @importFrom methods is
 #' @importFrom paletteer paletteer_c

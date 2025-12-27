@@ -8,13 +8,13 @@ Authors@R: person('Andrei-Florian', 'Stoica',
      comment=c(ORCID='0000-0002-5253-0826'))
 Description: scLang is a suite for package development for scRNA-seq analysis. 
     It offers functions—both getters and setters—that can operate 
-    on both Seurat and SingleCellExperiment objects, intended to help 
-    developers build tools compatible with both types of input.
+    on both Seurat and SingleCellExperiment objects. These functions are 
+    primarily aimed to help developers build tools compatible with both types 
+    of input.
 License: MIT + file LICENSE
 Imports:
     dplyr,
     ggplot2,
-    grDevices,
     henna,
     methods,
     paletteer,
