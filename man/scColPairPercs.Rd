@@ -22,11 +22,13 @@ from two categorical columns.
 }
 \description{
 This function extracts percentage information from two columns of a
-single-cell expression object.
+single-cell expression object. For each i x j combination with i taken
+from column 1 and j taken from column 2, the function reports the percentage
+that i contributes to all combinations involving j.
 }
 \examples{
 scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
 sceObj <- qs2::qs_read(scePath)
-scColPairPercs(sceObj, 'Mutation_Status', 'Cell_Cycle')
+scColPairPercs(sceObj, 'Cluster', 'Donor')
 
 }

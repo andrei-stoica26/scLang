@@ -20,6 +20,5 @@ pickFeature <- function(scObj, feature){
             stop(feature, ' is not a numeric column.')
         return(col)
     }
-
     stop('Feature not found: ', feature, '.')
 }

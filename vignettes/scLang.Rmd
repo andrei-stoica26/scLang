@@ -1,8 +1,8 @@
 ---
-title: "scLang"
+title: "Introduction to scLang"
 author: "Andrei-Florian Stoica"
 package: scLang
-date: December 25, 2025
+date: March 2, 2026
 output: BiocStyle::html_document
 vignette: >
     %\VignetteIndexEntry{scLang}
@@ -88,7 +88,7 @@ mat2 <- scExpMat(seuratObj)
 identical(mat1, mat2)
 ```
 
-**Note**: By default, the function extracts normalized and log-transformed 
+**Note**: By default, this function extracts normalized and log-transformed 
 data, looking for the `data` assay for a `Seurat` object, and for the 
 `logcounts` assay for a `SingleCellExperiment` object. This behavior 
 can be changed using the `dataType` parameter.

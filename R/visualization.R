@@ -3,8 +3,7 @@
 #' @importFrom ggplot2 scale_color_manual scale_fill_manual theme theme_classic
 #' @importFrom henna centerTitle
 #' @importFrom methods is
-#' @importFrom paletteer paletteer_c
-#' @importFrom wesanderson wes_palette
+#' @importFrom paletteer paletteer_c paletteer_d
 #'
 NULL
 
@@ -21,7 +20,7 @@ NULL
 #' @examples
 #' scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
 #' sceObj <- qs2::qs_read(scePath)
-#' dimPlot(sceObj, groupBy='Mutation_Status')
+#' dimPlot(sceObj, groupBy='Donor')
 #'
 #' @export
 #'
@@ -85,7 +84,7 @@ dimPlot <- function(scObj,
 #' @examples
 #' scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
 #' sceObj <- qs2::qs_read(scePath)
-#' featurePlot(sceObj, 'Gene_0289')
+#' featurePlot(sceObj, 'Gene289')
 #'
 #' @export
 #'
@@ -95,7 +94,8 @@ featurePlot <- function(scObj,
                         dimred = 'umap',
                         dims = c(1, 2),
                         legendTitle = NULL,
-                        palette = wes_palette('Royal1')[c(3, 2)],
+                        palette = paletteer_d("wesanderson::Royal1")[c(3, 2)],
+                        pointSize = 0.5,
                         alpha = 0.6,
                         legendPos = c('right', 'top', 'left', 'bottom'),
                         legendTextSize = 10,
@@ -117,6 +117,7 @@ featurePlot <- function(scObj,
     p <- ggplot(df) + geom_point(aes(x=df[, 1],
                                      y=df[, 2],
                                      color=df[, 3]),
+                                 size=pointSize,
                                  alpha=alpha) +
         labs(x=paste0(dimred, '_', dims[1]),
              y=paste0(dimred, '_', dims[2]),
@@ -148,7 +149,7 @@ featurePlot <- function(scObj,
 #' @examples
 #' scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
 #' sceObj <- qs2::qs_read(scePath)
-#' violinPlot(sceObj, 'Gene_0289')
+#' violinPlot(sceObj, 'Gene289')
 #'
 #' @export
 #'

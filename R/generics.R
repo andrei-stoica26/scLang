@@ -56,7 +56,7 @@ metadataDF <- function(scObj)
 #' @examples
 #' scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
 #' sceObj <- qs2::qs_read(scePath)
-#' v <- scCol(sceObj, 'Mutation_Status')
+#' v <- scCol(sceObj, 'Cluster')
 #'
 #' @export
 #'
@@ -127,7 +127,7 @@ scExpMat <- function(scObj, slot, genes = NULL, densify = TRUE)
 #' @examples
 #' scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
 #' sceObj <- qs2::qs_read(scePath)
-#' v <- scGeneExp(sceObj, 'Gene_0491')
+#' v <- scGeneExp(sceObj, 'Gene291')
 #'
 #' @export
 #'

@@ -44,6 +44,6 @@ This function extracts a metadata/coldata column from a \code{Seurat} or
 \examples{
 scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
 sceObj <- qs2::qs_read(scePath)
-v <- scCol(sceObj, 'Mutation_Status')
+v <- scCol(sceObj, 'Cluster')
 
 }

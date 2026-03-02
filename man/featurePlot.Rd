@@ -11,7 +11,8 @@ featurePlot(
   dimred = "umap",
   dims = c(1, 2),
   legendTitle = NULL,
-  palette = wes_palette("Royal1")[c(3, 2)],
+  palette = paletteer_d("wesanderson::Royal1")[c(3, 2)],
+  pointSize = 0.5,
   alpha = 0.6,
   legendPos = c("right", "top", "left", "bottom"),
   legendTextSize = 10,
@@ -37,6 +38,8 @@ for the plot.}
 
 \item{palette}{Color palette.}
 
+\item{pointSize}{Point size.}
+
 \item{alpha}{Opaqueness level.}
 
 \item{legendPos}{Legend position.}
@@ -49,7 +52,7 @@ for the plot.}
 
 \item{axisTitleSize}{Axis title size.}
 
-\item{...}{Additional arguments passed to \code{centerTitle}.}
+\item{...}{Additional arguments passed to \code{henna::centerTitle}.}
 }
 \value{
 A feature plot.
@@ -61,6 +64,6 @@ feature (gene expression or numeric metadata column).
 \examples{
 scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
 sceObj <- qs2::qs_read(scePath)
-featurePlot(sceObj, 'Gene_0289')
+featurePlot(sceObj, 'Gene289')
 
 }

@@ -1,7 +1,7 @@
 Package: scLang
 Type: Package
 Title: A unified language for interacting with Seurat and SingleCellExperiment
-Version: 0.99.0
+Version: 0.99.1
 Authors@R: person('Andrei-Florian', 'Stoica', 
       email='andreistoica@foxmail.com',
      role=c('aut','cre'),
@@ -23,8 +23,7 @@ Imports:
     SeuratObject,
     SingleCellExperiment,
     stats,
-    SummarizedExperiment,
-    wesanderson
+    SummarizedExperiment
 Suggests:
     BiocStyle,
     knitr,
@@ -32,6 +31,7 @@ Suggests:
     rmarkdown,
     scater,
     scRNAseq,
+    Seurat,
     testthat (>= 3.0.0)
 biocViews: 
     Software,

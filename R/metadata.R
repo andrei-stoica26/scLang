@@ -93,27 +93,33 @@ scCol.default <- function(scObj, col)
 #' @rdname scCol
 #' @export
 #'
-scCol.Seurat <- function(scObj, col)
-    return(scObj[[]][[col]])
+scCol.Seurat <- function(scObj, col){
+    if (col %in% metadataNames(scObj))
+        return(metadataDF(scObj)[[col]])
+    stop(col, ' not found in this Seurat object.')
+}
 
 #' @rdname scCol
 #' @export
 #'
 `scCol<-.Seurat` <- function(scObj, col, value){
-    scObj[[]][[col]] <- value
+    metadataDF(scObj)[[col]] <- value
     return(scObj)
 }
 
 #' @rdname scCol
 #' @export
 #'
-scCol.SingleCellExperiment <- function(scObj, col)
-    return(scObj[[col]])
+scCol.SingleCellExperiment <- function(scObj, col){
+    if (col %in% metadataNames(scObj))
+        return(metadataDF(scObj)[[col]])
+    stop(col, ' not found in this SingleCellExperiment object.')
+}
 
 #' @rdname scCol
 #' @export
 #'
 `scCol<-.SingleCellExperiment` <- function(scObj, col, value){
-    scObj[[col]] <- value
+    metadataDF(scObj)[[col]] <- value
     return(scObj)
 }

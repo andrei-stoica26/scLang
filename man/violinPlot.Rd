@@ -61,7 +61,7 @@ the single-cell expression object.}
 
 \item{xLabVjust}{x axis label vertical justification in [0, 1].}
 
-\item{...}{Additional arguments passed to \code{centerTitle}.}
+\item{...}{Additional arguments passed to \code{henna::centerTitle}.}
 }
 \value{
 A violin plot.
@@ -73,6 +73,6 @@ feature (gene expression or numeric metadata column).
 \examples{
 scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
 sceObj <- qs2::qs_read(scePath)
-violinPlot(sceObj, 'Gene_0289')
+violinPlot(sceObj, 'Gene289')
 
 }

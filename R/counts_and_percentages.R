@@ -15,7 +15,7 @@ NULL
 #' @examples
 #' scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
 #' sceObj <- qs2::qs_read(scePath)
-#' scColCounts(sceObj, 'Mutation_Status')
+#' scColCounts(sceObj, 'Cluster')
 #'
 #' @export
 #'
@@ -41,7 +41,7 @@ scColCounts <- function(scObj, col='orig.ident'){
 #' @examples
 #' scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
 #' sceObj <- qs2::qs_read(scePath)
-#' scColPairCounts(sceObj, 'Mutation_Status', 'Cell_Cycle')
+#' scColPairCounts(sceObj, 'Cluster', 'Donor')
 #'
 #' @export
 #'
@@ -52,7 +52,9 @@ scColPairCounts <- function(scObj, col1='seurat_clusters', col2='orig.ident')
 #' object
 #'
 #' This function extracts percentage information from two columns of a
-#' single-cell expression object.
+#' single-cell expression object. For each i x j combination with i taken
+#' from column 1 and j taken from column 2, the function reports the percentage
+#' that i contributes to all combinations involving j.
 #'
 #' @inheritParams scColPairCounts
 #' @param sigDigits Number of significant digits.
@@ -63,15 +65,14 @@ scColPairCounts <- function(scObj, col1='seurat_clusters', col2='orig.ident')
 #' @examples
 #' scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
 #' sceObj <- qs2::qs_read(scePath)
-#' scColPairPercs(sceObj, 'Mutation_Status', 'Cell_Cycle')
+#' scColPairPercs(sceObj, 'Cluster', 'Donor')
 #'
 #' @export
 #'
 scColPairPercs <- function(scObj, col1, col2, sigDigits = 2){
     df <- scColPairCounts(scObj, col1, col2)
-    nRep <- length(unique(scCol(scObj, col2)))
-    totals <- as.numeric(unlist(lapply(scColCounts(scObj, col1),
-                                       function(x) rep(x, nRep))))
-    df$perc <- round(df$n / totals * 100, sigDigits)
+    totals <- vapply(unique(df[, 2]), function(x)
+        sum(df[df[, 2] == x, ]$n), integer(1))
+    df$perc <- round(df[, 3] / totals[df[, 2]] * 100, sigDigits)
     return(df)
 }

@@ -25,6 +25,6 @@ expression object.
 \examples{
 scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
 sceObj <- qs2::qs_read(scePath)
-scColPairCounts(sceObj, 'Mutation_Status', 'Cell_Cycle')
+scColPairCounts(sceObj, 'Cluster', 'Donor')
 
 }

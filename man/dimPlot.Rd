@@ -57,7 +57,7 @@ provided (\code{groupBy} is \code{NULL})}
 
 \item{axisTitleSize}{Axis title size.}
 
-\item{...}{Additional arguments passed to \code{centerTitle}.}
+\item{...}{Additional arguments passed to \code{henna::centerTitle}.}
 }
 \value{
 A dimensionality reduction plot.
@@ -68,6 +68,6 @@ This function creates a dimensionality reduction plot
 \examples{
 scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
 sceObj <- qs2::qs_read(scePath)
-dimPlot(sceObj, groupBy='Mutation_Status')
+dimPlot(sceObj, groupBy='Donor')
 
 }

@@ -7,6 +7,7 @@
 documentFun(
   scObj = NULL,
   title = NULL,
+  groupBy = NULL,
   dimred = "umap",
   dims = c(1, 2),
   xLab = "x",
@@ -16,22 +17,11 @@ documentFun(
   legendPos = "right",
   palette = "Spectral",
   alpha = 1,
-  labelSize = 2.5,
-  labelColor = "black",
-  labelRepulsion = 1,
-  labelPull = 1,
-  maxOverlaps = 50,
-  boxPadding = 0.2,
-  labelPadding = 0.1,
   pointSize = 0.8,
-  pointShape = 1,
   legendTitleSize = 10,
   legendTextSize = 10,
   axisTextSize = 12,
   axisTitleSize = 12,
-  xAngle = 45,
-  vJust = 0.6,
-  theme = "linedraw",
   ...
 )
 }
@@ -39,6 +29,9 @@ documentFun(
 \item{scObj}{A \code{Seurat} or \code{SingleCellExperiment} object.}
 
 \item{title}{Plot title.}
+
+\item{groupBy}{Grouping variable. Must exist in the metadata/coldata of
+the single-cell expression object.}
 
 \item{dimred}{Dimensionality reduction.}
 
@@ -59,24 +52,7 @@ for the plot.}
 
 \item{alpha}{Opaqueness level.}
 
-\item{labelSize}{Label size.}
-
-\item{labelColor}{Label color.}
-
-\item{labelRepulsion}{Repulsion strength between labels.}
-
-\item{labelPull}{Attraction strength between a text label
-and its data point.}
-
-\item{maxOverlaps}{Maximum overlaps.}
-
-\item{boxPadding}{Amount of padding around box.}
-
-\item{labelPadding}{Amount of padding around label.}
-
 \item{pointSize}{Point size.}
-
-\item{pointShape}{Point shape.}
 
 \item{legendTitleSize}{Legend title size.}
 
@@ -86,21 +62,7 @@ and its data point.}
 
 \item{axisTitleSize}{Axis title size.}
 
-\item{xAngle}{Angle of x axis text.}
-
-\item{vJust}{Vertical justification in [0, 1].}
-
-\item{theme}{Plot theme.}
-
-\item{...}{Additional arguments passed to \code{centerTitle}.}
-
-\item{groupBy}{Grouping variable. Must exist in the metadata/coldata of
-the single-cell expression object.}
-
-\item{labelDF}{Label data frame.}
-
-\item{labelType}{Whether to draw a box around labels (option 'boxed') or not
-(option 'free'). Default is 'free'.}
+\item{...}{Additional arguments passed to \code{henna::centerTitle}.}
 }
 \value{
 \code{NULL}. This function is only used internally for
