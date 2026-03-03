@@ -36,7 +36,9 @@ BiocManager::install("scLang")
 ```
 
 # Prerequisites
-In addition to `scLang`, you need to install [scater](https://bioconductor.org/packages/release/bioc/html/scater.html) and [scRNAseq](https://bioconductor.org/packages/release/data/experiment/html/scRNAseq.html)
+In addition to `scLang`, you need to install 
+[scater](https://bioconductor.org/packages/release/bioc/html/scater.html) and 
+[scRNAseq](https://bioconductor.org/packages/release/data/experiment/html/scRNAseq.html)
 for this tutorial.
 
 # Loading and preparing data

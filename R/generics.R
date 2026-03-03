@@ -1,7 +1,7 @@
 #' Extract the names of available dimensionality reductions from object
 #'
 #' This function extracts the names of available dimensionality reductions
-#' from a Seurat or SingleCellExperiment object.
+#' from a \code{Seurat} or \code{SingleCellExperiment} object.
 #'
 #' @inheritParams metadataNames
 #'
@@ -66,8 +66,8 @@ scCol <- function(scObj, col)
 
 #' Extracts a dimensionality reduction matrix from object.
 #'
-#' This function extracts a dimensionality reduction matrix from a Seurat or
-#' SingleCellExperiment object.
+#' This function extracts a dimensionality reduction matrix from a
+#' \code{Seurat} or \code{SingleCellExperiment} object.
 #'
 #' @inheritParams metadataNames
 #' @param dimred Dimensionality reduction.
@@ -87,8 +87,11 @@ scDimredMat <- function(scObj, dimred)
 
 #' Extracts the expression matrix from object.
 #'
-#' This function extracts an expression matrix from a Seurat or
-#' SingleCellExperiment object.
+#' This function extracts an expression matrix from a \code{Seurat} or
+#' \code{SingleCellExperiment} object. For additional flexibility, the input
+#' can alternatively be provided as a \code{dgCMatrix} object
+#' (and an option to densify it is also available) or as a \code{matrix}
+#' object.
 #'
 #' @inheritParams scGeneExp
 #' @param genes Selected genes. If \code{NULL}, all genes will be retained.
@@ -108,8 +111,8 @@ scExpMat <- function(scObj, slot, genes = NULL, densify = TRUE)
 
 #' Extracts the expression of a single gene
 #'
-#' This function extracts the expression of a single gene from a Seurat,
-#' SingleCellExperiment, dgCMatrix or matrix object.
+#' This function extracts the expression of a single gene from a \code{Seurat},
+#' \code{SingleCellExperiment}, \code{dgCMatrix} or \code{matrix} object.
 #
 #' @param scObj A \code{Seurat}, \code{SingleCellExperiment},
 #' \code{dgCMatrix} or \code{matrix} object.

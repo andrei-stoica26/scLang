@@ -24,8 +24,8 @@ scDimredMat(scObj, dimred)
 A dimensionality reduction matrix.
 }
 \description{
-This function extracts a dimensionality reduction matrix from a Seurat or
-SingleCellExperiment object.
+This function extracts a dimensionality reduction matrix from a
+\code{Seurat} or \code{SingleCellExperiment} object.
 }
 \examples{
 scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')

@@ -23,7 +23,7 @@ A character vector.
 }
 \description{
 This function extracts the names of available dimensionality reductions
-from a Seurat or SingleCellExperiment object.
+from a \code{Seurat} or \code{SingleCellExperiment} object.
 }
 \examples{
 scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')

@@ -36,8 +36,11 @@ scExpMat(scObj, slot, genes = NULL, densify = TRUE)
 An expression matrix.
 }
 \description{
-This function extracts an expression matrix from a Seurat or
-SingleCellExperiment object.
+This function extracts an expression matrix from a \code{Seurat} or
+\code{SingleCellExperiment} object. For additional flexibility, the input
+can alternatively be provided as a \code{dgCMatrix} object
+(and an option to densify it is also available) or as a \code{matrix}
+object.
 }
 \examples{
 scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')

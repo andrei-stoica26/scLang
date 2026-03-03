@@ -34,8 +34,8 @@ scGeneExp(scObj, gene, slot)
 A gene expression vector.
 }
 \description{
-This function extracts the expression of a single gene from a Seurat,
-SingleCellExperiment, dgCMatrix or matrix object.
+This function extracts the expression of a single gene from a \code{Seurat},
+\code{SingleCellExperiment}, \code{dgCMatrix} or \code{matrix} object.
 }
 \examples{
 scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
