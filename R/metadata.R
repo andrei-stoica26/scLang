@@ -9,41 +9,14 @@ metadataDF.default <- function(scObj)
 #' @rdname metadataDF
 #' @export
 #'
-`metadataDF<-.default` <- function(scObj, value)
-    stop('Unrecognized input type: `scObj` must be a Seurat or ',
-         'SingleCellExpression object.')
-
-#' @rdname metadataDF
-#' @export
-#'
 metadataDF.Seurat <- function(scObj)
     return(scObj[[]])
 
 #' @rdname metadataDF
 #' @export
 #'
-`metadataDF<-.Seurat` <- function(scObj, value){
-    if (!is.data.frame(value))
-        stop('`value` must be a data.frame.')
-    scObj[[]] <- value
-    return(scObj)
-}
-
-#' @rdname metadataDF
-#' @export
-#'
 metadataDF.SingleCellExperiment <- function(scObj)
     return(as.data.frame(colData(scObj)))
-
-#' @rdname metadataDF
-#' @export
-#'
-`metadataDF<-.SingleCellExperiment` <- function(scObj, value) {
-    if (!is.data.frame(value))
-        stop('`value` must be a data.frame.')
-    colData(scObj) <- DataFrame(value)
-    return(scObj)
-}
 
 ###############################################################################
 #' Return metadata names
@@ -64,16 +37,6 @@ metadataDF.SingleCellExperiment <- function(scObj)
 #'
 metadataNames <- function(scObj)
     return(colnames(metadataDF(scObj)))
-
-#' @rdname metadataNames
-#' @export
-#'
-`metadataNames<-` <- function(scObj, value){
-    if (!is.character(value))
-        stop('`value` must be a character.')
-    colnames(metadataDF(scObj)) <- value
-    return(scObj)
-}
 
 ###############################################################################
 #' @rdname scCol
@@ -103,7 +66,7 @@ scCol.Seurat <- function(scObj, col){
 #' @export
 #'
 `scCol<-.Seurat` <- function(scObj, col, value){
-    metadataDF(scObj)[[col]] <- value
+    scObj[[col]] <- value
     return(scObj)
 }
 
@@ -120,6 +83,6 @@ scCol.SingleCellExperiment <- function(scObj, col){
 #' @export
 #'
 `scCol<-.SingleCellExperiment` <- function(scObj, col, value){
-    metadataDF(scObj)[[col]] <- value
+    colData(scObj)[[col]] <- value
     return(scObj)
 }

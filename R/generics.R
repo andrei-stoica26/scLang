@@ -23,7 +23,6 @@ dimredNames <- function(scObj)
 #' \code{SingleCellExperiment} object as a data frame.
 #'
 #' @param scObj A \code{Seurat} or \code{SingleCellExperiment} object.
-#' @param value A data frame to replace metadata with.
 #'
 #' @return A metadata data frame.
 #'
@@ -37,12 +36,6 @@ dimredNames <- function(scObj)
 metadataDF <- function(scObj)
     UseMethod(generic='metadataDF', object=scObj)
 
-#' @rdname metadataDF
-#' @export
-#'
-`metadataDF<-` <- function(scObj, value)
-    UseMethod("metadataDF<-")
-
 #' Extract a metadata/coldata column from object.
 #'
 #' This function extracts a metadata/coldata column from a \code{Seurat} or
@@ -50,6 +43,8 @@ metadataDF <- function(scObj)
 #'
 #' @inheritParams metadataNames
 #' @param col Column name.
+#' @param value A vector to be added to the metadata/coldata of the
+#' single-cell expression object.
 #'
 #' @return A vector.
 #'

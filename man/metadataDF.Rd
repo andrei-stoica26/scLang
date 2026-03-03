@@ -2,35 +2,21 @@
 % Please edit documentation in R/generics.R, R/metadata.R
 \name{metadataDF}
 \alias{metadataDF}
-\alias{metadataDF<-}
 \alias{metadataDF.default}
-\alias{metadataDF<-.default}
 \alias{metadataDF.Seurat}
-\alias{metadataDF<-.Seurat}
 \alias{metadataDF.SingleCellExperiment}
-\alias{metadataDF<-.SingleCellExperiment}
 \title{Extract metadata from object as a data frame}
 \usage{
 metadataDF(scObj)
 
-metadataDF(scObj) <- value
-
 \method{metadataDF}{default}(scObj)
-
-\method{metadataDF}{default}(scObj) <- value
 
 \method{metadataDF}{Seurat}(scObj)
 
-\method{metadataDF}{Seurat}(scObj) <- value
-
 \method{metadataDF}{SingleCellExperiment}(scObj)
-
-\method{metadataDF}{SingleCellExperiment}(scObj) <- value
 }
 \arguments{
 \item{scObj}{A \code{Seurat} or \code{SingleCellExperiment} object.}
-
-\item{value}{A data frame to replace metadata with.}
 }
 \value{
 A metadata data frame.

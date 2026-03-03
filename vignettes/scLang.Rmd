@@ -2,7 +2,7 @@
 title: "Introduction to scLang"
 author: "Andrei-Florian Stoica"
 package: scLang
-date: March 2, 2026
+date: March 3, 2026
 output: BiocStyle::html_document
 vignette: >
     %\VignetteIndexEntry{scLang}
@@ -20,9 +20,9 @@ knitr::opts_chunk$set(
 # Introduction
 
 `scLang` is a suite for package development for scRNA-seq analysis. 
-It offers functions—both getters and setters—that can operate 
-on both `Seurat` and `SingleCellExperiment` objects, intended to help 
-developers build tools compatible with both types of input.
+It offers functions that can operate on both `Seurat` and 
+`SingleCellExperiment` objects. These functions are primarily 
+aimed to help developers build tools compatible with both types of input.
 
 # Installation
 
@@ -159,15 +159,6 @@ colNames1 <- metadataNames(seuratObj)
 colNames2 <- metadataNames(sceObj)
 identical(colNames1, colNames2)
 head(colNames1)
-```
-
-Akin to`scCol`, the `metadataDF` and `metadataNames` functions 
-allow users to alter the value of the stored objects:
-
-```{r}
-metadataDF(sceObj) <- cbind(metadataDF(sceObj), 1)
-metadataNames(sceObj)[length(metadataNames(sceObj))] <- 'extraCol'
-head(metadataDF(sceObj))
 ```
 
 # Creating frequency tables

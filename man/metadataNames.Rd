@@ -2,17 +2,12 @@
 % Please edit documentation in R/metadata.R
 \name{metadataNames}
 \alias{metadataNames}
-\alias{metadataNames<-}
 \title{Return metadata names}
 \usage{
 metadataNames(scObj)
-
-metadataNames(scObj) <- value
 }
 \arguments{
 \item{scObj}{A \code{Seurat} or \code{SingleCellExperiment} object.}
-
-\item{value}{A data frame to replace metadata with.}
 }
 \value{
 The names of the metadata columns.

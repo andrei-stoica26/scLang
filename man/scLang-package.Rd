@@ -6,7 +6,7 @@
 \alias{scLang-package}
 \title{scLang: A unified language for interacting with Seurat and SingleCellExperiment}
 \description{
-scLang is a suite for package development for scRNA-seq analysis. It offers functions—both getters and setters—that can operate on both Seurat and SingleCellExperiment objects. These functions are primarily aimed to help developers build tools compatible with both types of input.
+scLang is a suite for package development for scRNA-seq analysis. It offers functions that can operate on both Seurat and SingleCellExperiment objects. These functions are primarily aimed to help developers build tools compatible with both types of input.
 }
 \seealso{
 Useful links:

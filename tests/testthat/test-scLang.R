@@ -9,8 +9,6 @@ test_that("metadataDF works", {
     w <- metadataDF(sceObj)
     expect_equal(dim(v), c(200, 5))
     expect_equal(dim(w), c(200, 6))
-    metadataDF(sceObj) <- v
-    expect_identical(v, metadataDF(sceObj))
     expect_error(metadataDF(c(1, 2, 3)))
 })
 

@@ -32,7 +32,8 @@ scCol(scObj, col) <- value
 
 \item{col}{Column name.}
 
-\item{value}{A data frame to replace metadata with.}
+\item{value}{A vector to be added to the metadata/coldata of the
+single-cell expression object.}
 }
 \value{
 A vector.
