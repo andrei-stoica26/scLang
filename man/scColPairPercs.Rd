@@ -24,7 +24,7 @@ from two categorical columns.
 This function extracts percentage information from two columns of a
 single-cell expression object. For each i x j combination with i taken
 from column 1 and j taken from column 2, the function reports the percentage
-that i contributes to all combinations involving j.
+that j contributes to all combinations involving i.
 }
 \examples{
 scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')

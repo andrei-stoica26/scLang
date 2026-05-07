@@ -47,9 +47,9 @@ test_that("counting functions work", {
     expect_error(scColPairCounts(c(1, 2, 3)))
 
     expect_equal(scColPairPercs(seuratObj, 'Cluster', 'Donor')[1, 4],
-                 25.6)
+                 68.09)
     expect_equal(scColPairPercs(sceObj, 'Cluster', 'Donor')[1, 4],
-                 25.6)
+                 68.09)
     expect_error(scColPairPercs(c(1, 2, 3)))
 })
 
