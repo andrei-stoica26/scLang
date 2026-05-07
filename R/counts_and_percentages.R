@@ -71,8 +71,8 @@ scColPairCounts <- function(scObj, col1='seurat_clusters', col2='orig.ident')
 #'
 scColPairPercs <- function(scObj, col1, col2, sigDigits = 2){
     df <- scColPairCounts(scObj, col1, col2)
-    totals <- vapply(unique(df[, 2]), function(x)
-        sum(df[df[, 2] == x, ]$n), integer(1))
-    df$perc <- round(df[, 3] / totals[df[, 2]] * 100, sigDigits)
+    totals <- vapply(unique(df[, 1]), function(x)
+        sum(df[df[, 1] == x, ]$n), integer(1))
+    df$perc <- round(df[, 3] / totals[df[, 1]] * 100, sigDigits)
     return(df)
 }
