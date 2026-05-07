@@ -50,7 +50,14 @@ test_that("counting functions work", {
                  68.09)
     expect_equal(scColPairPercs(sceObj, 'Cluster', 'Donor')[1, 4],
                  68.09)
+
     expect_error(scColPairPercs(c(1, 2, 3)))
+
+    expect_equal(scColPairRatios(seuratObj, 'Cluster', 'Donor')[1, 6],
+                 1.08944, tolerance=0.0001)
+    expect_equal(scColPairRatios(sceObj, 'Cluster', 'Donor')[1, 6],
+                 1.08944, tolerance=0.0001)
+
 })
 
 test_that("scGeneExp works", {

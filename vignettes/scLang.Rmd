@@ -2,7 +2,7 @@
 title: "Introduction to scLang"
 author: "Andrei-Florian Stoica"
 package: scLang
-date: March 3, 2026
+date: May 7, 2026
 output: BiocStyle::html_document
 vignette: >
     %\VignetteIndexEntry{scLang}
@@ -178,6 +178,22 @@ freq1 <- scColPairCounts(sceObj, 'donor', 'label')
 freq2 <- scColPairCounts(seuratObj, 'donor', 'label')
 identical(freq1, freq2)
 head(freq1)
+```
+
+Percentages and observed-over-expected ratios can also be computed over two
+categorical columns using the `scColPairPercs` and `scColPairRatios` functions:
+
+```{r}
+perc1 <- scColPairPercs(sceObj, 'donor', 'label')
+perc2 <- scColPairPercs(seuratObj, 'donor', 'label')
+identical(perc1, perc2)
+head(perc1)
+
+ratios1 <- scColPairRatios(sceObj, 'donor', 'label')
+ratios2 <- scColPairRatios(seuratObj, 'donor', 'label')
+identical(ratios1, ratios2)
+head(ratios1)
+
 ```
 
 # Visualization

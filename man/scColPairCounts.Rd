@@ -5,7 +5,7 @@
 \title{Extract counts from two columns of a single-cell expression
 object}
 \usage{
-scColPairCounts(scObj, col1 = "seurat_clusters", col2 = "orig.ident")
+scColPairCounts(scObj, col1, col2)
 }
 \arguments{
 \item{scObj}{A \code{Seurat} or \code{SingleCellExperiment} object.}

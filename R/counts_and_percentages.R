@@ -19,7 +19,7 @@ NULL
 #'
 #' @export
 #'
-scColCounts <- function(scObj, col='orig.ident'){
+scColCounts <- function(scObj, col){
     df <- dplyr::count(metadataDF(scObj), .data[[col]])
     v <- setNames(df[, 2], as.factor(df[, 1]))
     return(v)
@@ -45,7 +45,7 @@ scColCounts <- function(scObj, col='orig.ident'){
 #'
 #' @export
 #'
-scColPairCounts <- function(scObj, col1='seurat_clusters', col2='orig.ident')
+scColPairCounts <- function(scObj, col1, col2)
     return(dplyr::count(metadataDF(scObj), .data[[col1]], .data[[col2]]))
 
 #' Extract percentages from two columns of a single-cell expression
@@ -74,5 +74,34 @@ scColPairPercs <- function(scObj, col1, col2, sigDigits = 2){
     totals <- vapply(unique(df[, 1]), function(x)
         sum(df[df[, 1] == x, ]$n), integer(1))
     df$perc <- round(df[, 3] / totals[df[, 1]] * 100, sigDigits)
+    return(df)
+}
+
+#' Extract observed-over-expected ratios from two columns of a single-cell
+#' expression object
+#'
+#' This function extracts observed-over-expected ratios from two columns of a
+#' single-cell expression object.
+#'
+#' @inheritParams scColPairCounts
+#' @param sigDigits Number of significant digits.
+#'
+#' @return A data frame listing the observed-over-expected ratios of all
+#' combinations of pairs from two categorical columns.
+#'
+#' @examples
+#' scePath <- system.file('extdata', 'sceObj.qs2', package='scLang')
+#' sceObj <- qs2::qs_read(scePath)
+#' scColPairRatios(sceObj, 'Cluster', 'Donor')
+#'
+#' @export
+#'
+scColPairRatios <- function (scObj, col1, col2, sigDigits = 2){
+    df <- scColPairPercs(scObj, col1, col2)
+    totals <- vapply(unique(df[, 2]), function(x)
+        sum(df[df[, 2] == x, ]$n), integer(1))
+    total <- sum(totals)
+    df$totalPerc <- round(totals[df[, 2]] / total * 100, sigDigits)
+    df$ratio <- df$perc / df$totalPerc
     return(df)
 }

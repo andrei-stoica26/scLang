@@ -4,7 +4,7 @@
 \alias{scColCounts}
 \title{Extract per-group counts from the column of a single-cell expression object}
 \usage{
-scColCounts(scObj, col = "orig.ident")
+scColCounts(scObj, col)
 }
 \arguments{
 \item{scObj}{A \code{Seurat} or \code{SingleCellExperiment} object.}
